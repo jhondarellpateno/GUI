@@ -138,17 +138,37 @@ public class Login extends javax.swing.JFrame {
         String hash = config.hashPassword(pass);
         String qry = ("SELECT * FROM tbl_user WHERE u_email = ? AND u_pass = ?");
         List<Map<String, Object>> result = config.fetchRecords(qry, email, hash);
-       
+        
+        
         if (result.isEmpty()){
            JOptionPane.showMessageDialog(null, "Wrong Username or Password!", "Message", JOptionPane.ERROR_MESSAGE);
         }
         else{
            JOptionPane.showMessageDialog(null, "Hello " + result.get(0).get("u_name") + "!");
+        
+        java.util.Map<String, Object> check = result.get(0);
+        String type = check.get("u_type").toString();
+       
            
-           dashboard dashFrame = new dashboard();
+        if(type.equals("Admin")){   
+           Admindashboard dashFrame = new Admindashboard();
            dashFrame.setVisible(true);
            dashFrame.setLocationRelativeTo(null);
            this.dispose();
+        }
+        else if(type.equals("Manager")){
+            Managerdashboard manager = new Managerdashboard();
+            manager.setLocationRelativeTo(null);
+            manager.setVisible(true);
+            this.dispose();
+        }
+        else if(type.equals("Supplier")){
+            Supplierdashboard supplier = new Supplierdashboard();
+            supplier.setLocationRelativeTo(null);
+            supplier.setVisible(true);
+            this.dispose();
+        }
+        
         }
         jemail1.setText("");
         jpass.setText("");

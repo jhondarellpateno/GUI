@@ -37,12 +37,14 @@ public class Signup extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jname = new javax.swing.JTextField();
-        jemail = new javax.swing.JTextField();
+        jtype = new javax.swing.JTextField();
         jpassword2 = new javax.swing.JPasswordField();
         jpassword = new javax.swing.JPasswordField();
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jemail1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -78,16 +80,22 @@ public class Signup extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(78, 102, 173));
         jLabel9.setText("Email");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 170, 40));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 170, 40));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(78, 102, 173));
         jLabel10.setText("Password");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 170, 40));
-        jPanel1.add(jname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 280, 30));
-        jPanel1.add(jemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 280, 30));
-        jPanel1.add(jpassword2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 280, 30));
-        jPanel1.add(jpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 280, 30));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 170, 40));
+        jPanel1.add(jname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 280, 30));
+
+        jtype.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtypeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtype, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 280, 30));
+        jPanel1.add(jpassword2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 280, 30));
+        jPanel1.add(jpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 280, 30));
 
         jToggleButton1.setBackground(new java.awt.Color(78, 102, 173));
         jToggleButton1.setForeground(new java.awt.Color(237, 241, 249));
@@ -101,13 +109,19 @@ public class Signup extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(78, 102, 173));
-        jLabel11.setText("Re-Enter Password");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 170, 40));
+        jLabel11.setText("Type");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 170, 40));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(78, 102, 173));
         jLabel12.setText("Already have an account?");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 190, 40));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(78, 102, 173));
+        jLabel13.setText("Re-Enter Password");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 170, 40));
+        jPanel1.add(jemail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 280, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 410, 500));
 
@@ -140,9 +154,10 @@ public class Signup extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         String name = jname.getText();
-        String email = jemail.getText();
+        String email = jemail1.getText();
         String pass = jpassword.getText();
         String confpass = jpassword2.getText();
+        String type = jtype.getText();
         
         if(name.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please Input Your Name!");
@@ -156,20 +171,27 @@ public class Signup extends javax.swing.JFrame {
         else if(!pass.equals(confpass)){
             JOptionPane.showMessageDialog(null, "Password not match!");
         }
+        else if(type.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please input User Type!");
+        }
         else {
             JOptionPane.showMessageDialog(null, "Account Successfully Created!");
         }
         
         config db = new config();
         String hash = db.hashPassword(pass);
-        String sql = "INSERT INTO tbl_user (u_name, u_email, u_pass, u_status) VALUES (?, ?, ?, ?)";
-        db.addRecord(sql, name, email, hash, "Pending");
+        String sql = "INSERT INTO tbl_user (u_name, u_email, u_pass, u_status, u_type) VALUES (?, ?, ?, ?, ?)";
+        db.addRecord(sql, name, email, hash, "Pending", type);
         
         jname.setText("");
-        jemail.setText("");
+        jtype.setText("");
         jpassword.setText("");
         jpassword2.setText("");
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jtypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtypeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,6 +233,7 @@ public class Signup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -220,9 +243,10 @@ public class Signup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JTextField jemail;
+    private javax.swing.JTextField jemail1;
     private javax.swing.JTextField jname;
     private javax.swing.JPasswordField jpassword;
     private javax.swing.JPasswordField jpassword2;
+    private javax.swing.JTextField jtype;
     // End of variables declaration//GEN-END:variables
 }

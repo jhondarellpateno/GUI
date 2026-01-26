@@ -13,6 +13,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import main.Login;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -113,6 +114,18 @@ public class config {
     } catch (java.security.NoSuchAlgorithmException e) {
         System.out.println("Error hashing password: " + e.getMessage());
         return null;
+    }
+}
+   public void displayData(String sql, javax.swing.JTable table) {
+    try (Connection conn = connectDB();
+         PreparedStatement pstmt = conn.prepareStatement(sql);
+         ResultSet rs = pstmt.executeQuery()) {
+        
+        // This line automatically maps the Resultset to your JTable
+        table.setModel(DbUtils.resultSetToTableModel(rs));
+        
+    } catch (SQLException e) {
+        System.out.println("Error displaying data: " + e.getMessage());
     }
 }
 }

@@ -5,6 +5,9 @@
  */
 package main;
 
+import supplierDashboard.Supplierdashboard;
+import managerDashboard.Managerdashboard;
+import adminDashboard.Admindashboard;
 import config.config;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +44,7 @@ public class Login extends javax.swing.JFrame {
         jpass = new javax.swing.JPasswordField();
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel12 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -61,7 +65,7 @@ public class Login extends javax.swing.JFrame {
                 jLabel4MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 60, 40));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, 60, 40));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(78, 102, 173));
@@ -83,6 +87,11 @@ public class Login extends javax.swing.JFrame {
         jToggleButton1.setBackground(new java.awt.Color(78, 102, 173));
         jToggleButton1.setForeground(new java.awt.Color(237, 241, 249));
         jToggleButton1.setText("Login");
+        jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jToggleButton1MouseEntered(evt);
+            }
+        });
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
@@ -96,6 +105,16 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 190, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 410, 500));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("< BACK");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 3, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(78, 102, 173));
@@ -176,6 +195,17 @@ public class Login extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        landingPage back = new landingPage();
+        back.setLocationRelativeTo(null);
+        back.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jToggleButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseEntered
+
+    }//GEN-LAST:event_jToggleButton1MouseEntered
+
     /**
      * @param args the command line arguments
      */
@@ -216,6 +246,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

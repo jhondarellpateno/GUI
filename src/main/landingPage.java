@@ -37,7 +37,7 @@ public class landingPage extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        get = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -92,15 +92,23 @@ public class landingPage extends javax.swing.JFrame {
         });
         getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 30, -1, 30));
 
-        jToggleButton2.setBackground(new java.awt.Color(78, 102, 173));
-        jToggleButton2.setForeground(new java.awt.Color(237, 241, 249));
-        jToggleButton2.setText("GET STARTED");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+        get.setBackground(new java.awt.Color(78, 102, 173));
+        get.setForeground(new java.awt.Color(237, 241, 249));
+        get.setText("GET STARTED");
+        get.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                getMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                getMouseExited(evt);
             }
         });
-        getContentPane().add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 130, 40));
+        get.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getActionPerformed(evt);
+            }
+        });
+        getContentPane().add(get, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 130, 40));
 
         jLabel1.setForeground(new java.awt.Color(10, 37, 64));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/landingbackground.png"))); // NOI18N
@@ -111,12 +119,12 @@ public class landingPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+    private void getActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getActionPerformed
         Signup signupFrame = new Signup();
         signupFrame.setLocationRelativeTo(null);
         signupFrame.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }//GEN-LAST:event_getActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         Login loginFrame = new Login();
@@ -124,6 +132,16 @@ public class landingPage extends javax.swing.JFrame {
         loginFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void getMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_getMouseEntered
+        if (!get.isSelected()){
+        get.setBackground(new java.awt.Color(10,37,64));
+        }
+    }//GEN-LAST:event_getMouseEntered
+
+    private void getMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_getMouseExited
+        get.setBackground(new java.awt.Color(78,102,173));
+    }//GEN-LAST:event_getMouseExited
 
     /**
      * @param args the command line arguments
@@ -161,6 +179,7 @@ public class landingPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton get;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -171,6 +190,5 @@ public class landingPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
     // End of variables declaration//GEN-END:variables
 }

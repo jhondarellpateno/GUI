@@ -14,11 +14,19 @@ import main.landingPage;
  */
 public class Admindashboard extends javax.swing.JFrame {
 
-    /**
-     * Creates new form dashboard
-     */
-    public Admindashboard() {
+    private String nam;
+    private String em;
+
+    public Admindashboard(String names, String emails) {
         initComponents();
+        name.setText(names);
+        email.setText(emails);
+        em = emails;
+        nam = names;
+    }
+
+    private Admindashboard() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -38,11 +46,12 @@ public class Admindashboard extends javax.swing.JFrame {
         approveacc = new javax.swing.JPanel();
         approve = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        email = new javax.swing.JLabel();
         logout = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         account = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        name = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -84,9 +93,8 @@ public class Admindashboard extends javax.swing.JFrame {
         });
 
         approve.setBackground(new java.awt.Color(237, 241, 249));
-        approve.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        approve.setForeground(new java.awt.Color(237, 241, 249));
-        approve.setText("APPROVE ACCOUNTS");
+        approve.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        approve.setText("UPDATE ACCOUNTS");
         approve.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 approveMouseEntered(evt);
@@ -106,7 +114,7 @@ public class Admindashboard extends javax.swing.JFrame {
             approveaccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(approveaccLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(approve, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                .addComponent(approve, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -115,11 +123,11 @@ public class Admindashboard extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
-        jLabel10.setBackground(new java.awt.Color(237, 241, 249));
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(237, 241, 249));
-        jLabel10.setText("EDIT PROFILE");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 100, 50));
+        email.setBackground(new java.awt.Color(237, 241, 249));
+        email.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        email.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        email.setText("EMAIL");
+        jPanel3.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 220, 30));
 
         logout.setBackground(new java.awt.Color(96, 190, 220));
         logout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -136,7 +144,6 @@ public class Admindashboard extends javax.swing.JFrame {
 
         jLabel5.setBackground(new java.awt.Color(237, 241, 249));
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(237, 241, 249));
         jLabel5.setText("LOG OUT");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -177,8 +184,7 @@ public class Admindashboard extends javax.swing.JFrame {
         });
 
         jLabel8.setBackground(new java.awt.Color(237, 241, 249));
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(237, 241, 249));
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel8.setText("ACCOUNTS");
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -193,17 +199,23 @@ public class Admindashboard extends javax.swing.JFrame {
             .addGroup(accountLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         accountLayout.setVerticalGroup(
             accountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(accountLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.add(account, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 210, 40));
+
+        name.setBackground(new java.awt.Color(237, 241, 249));
+        name.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        name.setText("USER");
+        jPanel3.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 220, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 500));
 
@@ -218,45 +230,45 @@ public class Admindashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
-        logout.setBackground(new Color(10,37,64));   
+        logout.setBackground(new Color(10, 37, 64));
     }//GEN-LAST:event_logoutMouseEntered
 
     private void approveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseEntered
-        
+
     }//GEN-LAST:event_approveMouseEntered
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        accounts acc = new accounts();
+        accounts acc = new accounts(nam, em);
         acc.setLocationRelativeTo(null);
         acc.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void approveaccMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveaccMouseEntered
-        approveacc.setBackground(new Color(10,37,64));
+        approveacc.setBackground(new Color(10, 37, 64));
     }//GEN-LAST:event_approveaccMouseEntered
 
     private void approveaccMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveaccMouseExited
-        approveacc.setBackground(new Color(96,190,220));
+        approveacc.setBackground(new Color(96, 190, 220));
     }//GEN-LAST:event_approveaccMouseExited
 
     private void accountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountMouseClicked
-        accounts acc = new accounts();
+        accounts acc = new accounts(nam, em);
         acc.setLocationRelativeTo(null);
         acc.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_accountMouseClicked
 
     private void accountMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountMouseEntered
-        account.setBackground(new Color(10,37,64));
+        account.setBackground(new Color(10, 37, 64));
     }//GEN-LAST:event_accountMouseEntered
 
     private void accountMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountMouseExited
-        account.setBackground(new Color(96,190,220));
+        account.setBackground(new Color(96, 190, 220));
     }//GEN-LAST:event_accountMouseExited
 
     private void logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseExited
-        logout.setBackground(new Color(96,190,220));
+        logout.setBackground(new Color(96, 190, 220));
     }//GEN-LAST:event_logoutMouseExited
 
     private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
@@ -306,7 +318,7 @@ public class Admindashboard extends javax.swing.JFrame {
     private javax.swing.JPanel account;
     private javax.swing.JLabel approve;
     private javax.swing.JPanel approveacc;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel email;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -316,5 +328,6 @@ public class Admindashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel logout;
+    private javax.swing.JLabel name;
     // End of variables declaration//GEN-END:variables
 }

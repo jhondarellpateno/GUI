@@ -145,54 +145,56 @@ public class Login extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         String email = jemail1.getText();
-        String pass = jpass.getText();
-        
-        if(email.isEmpty()){
+        String pass = new String(jpass.getPassword());
+
+        if (email.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please Input Your Email!");
+            return;
         }
-        else if(pass.isEmpty()){
+        if (pass.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please Input Your Password!");
+            return;
         }
+
         config config = new config();
         String hash = config.hashPassword(pass);
-        String qry = ("SELECT * FROM tbl_user WHERE u_email = ? AND u_pass = ?");
+        String qry = "SELECT * FROM tbl_user WHERE u_email = ? AND u_pass = ?";
         List<Map<String, Object>> result = config.fetchRecords(qry, email, hash);
-        
-        
-        if (result.isEmpty()){
-           JOptionPane.showMessageDialog(null, "Wrong Username or Password!", "Message", JOptionPane.ERROR_MESSAGE);
+
+        if (result.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Wrong Username or Password!", "Message", JOptionPane.ERROR_MESSAGE);
+        } else {
+            Map<String, Object> user = result.get(0);
+            String name = user.get("u_name").toString();
+            String stat = user.get("u_status").toString();
+            String type = user.get("u_type").toString();
+            String emails = user.get("u_email").toString();
+
+            if (stat.equals("Pending")) {
+                JOptionPane.showMessageDialog(null, "Account is pending. Please contact admin for approval.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Hello " + name + "!\nLOGIN SUCCESS!");
+
+                if (type.equals("Admin")) {
+                    Admindashboard dash = new Admindashboard(name, emails);
+                    dash.setVisible(true);
+                    dash.setLocationRelativeTo(null);
+                } else if (type.equals("Manager")) {
+                    Managerdashboard manager = new Managerdashboard(name, emails);
+                    manager.setVisible(true);
+                    manager.setLocationRelativeTo(null);
+                } else if (type.equals("Supplier")) {
+                    Supplierdashboard supplier = new Supplierdashboard(name, emails);
+                    supplier.setVisible(true);
+                    supplier.setLocationRelativeTo(null);
+                }
+
+                this.dispose();
+            }
+
+            jemail1.setText("");
+            jpass.setText("");
         }
-        else{
-           JOptionPane.showMessageDialog(null, "Hello " + result.get(0).get("u_name") + "!");
-        
-        java.util.Map<String, Object> check = result.get(0);
-        String type = check.get("u_type").toString();
-       
-           
-        if(type.equals("Admin")){   
-           Admindashboard dashFrame = new Admindashboard();
-           dashFrame.setVisible(true);
-           dashFrame.setLocationRelativeTo(null);
-           this.dispose();
-        }
-        else if(type.equals("Manager")){
-            Managerdashboard manager = new Managerdashboard();
-            manager.setLocationRelativeTo(null);
-            manager.setVisible(true);
-            this.dispose();
-        }
-        else if(type.equals("Supplier")){
-            Supplierdashboard supplier = new Supplierdashboard();
-            supplier.setLocationRelativeTo(null);
-            supplier.setVisible(true);
-            this.dispose();
-        }
-        
-        }
-        jemail1.setText("");
-        jpass.setText("");
-        
-        
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked

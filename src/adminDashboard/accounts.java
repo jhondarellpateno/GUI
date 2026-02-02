@@ -6,6 +6,8 @@
 package adminDashboard;
 
 import config.config;
+import javax.swing.JOptionPane;
+import main.landingPage;
 
 /**
  *
@@ -13,15 +15,20 @@ import config.config;
  */
 public class accounts extends javax.swing.JFrame {
 
-   
-    public accounts() {
+    public accounts(String names, String emails) {
         initComponents();
+        name.setText(names);
+        email.setText(emails);
         displayU();
     }
-    
-    void displayU(){
+
+    private accounts() {
+
+    }
+
+    void displayU() {
         config con = new config();
-        String sql = "SELECT * FROM tbl_user";
+        String sql = "SELECT u_id, u_name, u_email, u_status, u_type FROM tbl_user";
         con.displayData(sql, jTable1);
     }
 
@@ -44,14 +51,14 @@ public class accounts extends javax.swing.JFrame {
         approveacc = new javax.swing.JPanel();
         approve = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         logout = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         account = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        name = new javax.swing.JLabel();
+        email = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 500));
 
         backg.setBackground(new java.awt.Color(237, 241, 249));
         backg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -76,11 +83,22 @@ public class accounts extends javax.swing.JFrame {
 
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jTable1.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
                 jTable1CaretPositionChanged(evt);
             }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                jTable1InputMethodTextChanged(evt);
+            }
+        });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTable1KeyTyped(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -101,8 +119,7 @@ public class accounts extends javax.swing.JFrame {
 
         approve.setBackground(new java.awt.Color(237, 241, 249));
         approve.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        approve.setForeground(new java.awt.Color(237, 241, 249));
-        approve.setText("APPROVE ACCOUNTS");
+        approve.setText("UPDATE ACCOUNTS");
         approve.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 approveMouseEntered(evt);
@@ -129,12 +146,6 @@ public class accounts extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
         back.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
-        jLabel10.setBackground(new java.awt.Color(237, 241, 249));
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(237, 241, 249));
-        jLabel10.setText("EDIT PROFILE");
-        back.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 100, 50));
-
         logout.setBackground(new java.awt.Color(96, 190, 220));
         logout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -144,7 +155,6 @@ public class accounts extends javax.swing.JFrame {
 
         jLabel5.setBackground(new java.awt.Color(237, 241, 249));
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(237, 241, 249));
         jLabel5.setText("LOG OUT");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -173,7 +183,6 @@ public class accounts extends javax.swing.JFrame {
 
         jLabel8.setBackground(new java.awt.Color(237, 241, 249));
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(237, 241, 249));
         jLabel8.setText("ACCOUNTS");
 
         javax.swing.GroupLayout accountLayout = new javax.swing.GroupLayout(account);
@@ -192,6 +201,18 @@ public class accounts extends javax.swing.JFrame {
         );
 
         back.add(account, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 200, 40));
+
+        name.setBackground(new java.awt.Color(237, 241, 249));
+        name.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        name.setText("USER");
+        back.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 220, 30));
+
+        email.setBackground(new java.awt.Color(237, 241, 249));
+        email.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        email.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        email.setText("EMAIL");
+        back.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 220, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -222,22 +243,37 @@ public class accounts extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void approveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseEntered
-        approve.setBackground(new java.awt.Color(10,37,64));
+        approve.setBackground(new java.awt.Color(10, 37, 64));
     }//GEN-LAST:event_approveMouseEntered
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-     
+        landingPage back = new landingPage();
+        back.setLocationRelativeTo(null);
+        back.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
-        if(!logout.isEnabled()){
-            logout.setBackground(new java.awt.Color(10,37,64));
+        if (!logout.isEnabled()) {
+            logout.setBackground(new java.awt.Color(10, 37, 64));
         }
     }//GEN-LAST:event_logoutMouseEntered
 
     private void jTable1CaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable1CaretPositionChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_jTable1CaretPositionChanged
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTable1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable1InputMethodTextChanged
+
+    }//GEN-LAST:event_jTable1InputMethodTextChanged
+
+    private void jTable1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1KeyTyped
 
     /**
      * @param args the command line arguments
@@ -253,16 +289,24 @@ public class accounts extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(accounts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(accounts.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(accounts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(accounts.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(accounts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(accounts.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(accounts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(accounts.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -280,7 +324,7 @@ public class accounts extends javax.swing.JFrame {
     private javax.swing.JPanel approveacc;
     private javax.swing.JPanel back;
     private javax.swing.JPanel backg;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel email;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -290,5 +334,6 @@ public class accounts extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JPanel logout;
+    private javax.swing.JLabel name;
     // End of variables declaration//GEN-END:variables
 }

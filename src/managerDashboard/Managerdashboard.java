@@ -13,10 +13,13 @@ import main.landingPage;
  */
 public class Managerdashboard extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Managerdashboard
-     */
-    public Managerdashboard() {
+    public Managerdashboard(String names, String emails) {
+        initComponents();
+        name.setText(names);
+        email.setText(emails);
+    }
+
+    private Managerdashboard() {
         initComponents();
     }
 
@@ -34,7 +37,6 @@ public class Managerdashboard extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -45,6 +47,8 @@ public class Managerdashboard extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jPanel23 = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
+        name = new javax.swing.JLabel();
+        email = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -76,12 +80,6 @@ public class Managerdashboard extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
         jPanel10.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
-
-        jLabel10.setBackground(new java.awt.Color(237, 241, 249));
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(237, 241, 249));
-        jLabel10.setText("EDIT PROFILE");
-        jPanel10.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 100, 50));
 
         jLabel11.setBackground(new java.awt.Color(237, 241, 249));
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -185,6 +183,20 @@ public class Managerdashboard extends javax.swing.JFrame {
 
         jPanel10.add(jPanel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, -1, -1));
 
+        name.setBackground(new java.awt.Color(237, 241, 249));
+        name.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        name.setForeground(new java.awt.Color(237, 241, 249));
+        name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        name.setText("USER");
+        jPanel10.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 220, 30));
+
+        email.setBackground(new java.awt.Color(237, 241, 249));
+        email.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        email.setForeground(new java.awt.Color(237, 241, 249));
+        email.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        email.setText("EMAIL");
+        jPanel10.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 220, 30));
+
         jPanel9.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 500));
 
         jPanel11.setBackground(new java.awt.Color(237, 241, 249));
@@ -261,7 +273,7 @@ public class Managerdashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel email;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -280,5 +292,6 @@ public class Managerdashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel name;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,7 +5,6 @@ package main;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author jhond
@@ -134,13 +133,13 @@ public class landingPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void getMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_getMouseEntered
-        if (!get.isSelected()){
-        get.setBackground(new java.awt.Color(10,37,64));
+        if (!get.isSelected()) {
+            get.setBackground(new java.awt.Color(10, 37, 64));
         }
     }//GEN-LAST:event_getMouseEntered
 
     private void getMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_getMouseExited
-        get.setBackground(new java.awt.Color(78,102,173));
+        get.setBackground(new java.awt.Color(78, 102, 173));
     }//GEN-LAST:event_getMouseExited
 
     /**

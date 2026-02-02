@@ -5,6 +5,8 @@
  */
 package supplierDashboard;
 
+import main.landingPage;
+
 /**
  *
  * @author jhond
@@ -14,7 +16,13 @@ public class Supplierdashboard extends javax.swing.JFrame {
     /**
      * Creates new form Supplierdashboard
      */
-    public Supplierdashboard() {
+    public Supplierdashboard(String names, String emails) {
+        initComponents();
+        name.setText(names);
+        email.setText(emails);
+    }
+
+    private Supplierdashboard() {
         initComponents();
     }
 
@@ -30,10 +38,11 @@ public class Supplierdashboard extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        name = new javax.swing.JLabel();
+        email = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -52,12 +61,6 @@ public class Supplierdashboard extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
-        jLabel10.setBackground(new java.awt.Color(237, 241, 249));
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(237, 241, 249));
-        jLabel10.setText("EDIT PROFILE");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 100, 50));
-
         jLabel11.setBackground(new java.awt.Color(237, 241, 249));
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(237, 241, 249));
@@ -68,6 +71,11 @@ public class Supplierdashboard extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(237, 241, 249));
         jLabel12.setText("LOG OUT");
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 190, 50));
 
         jLabel13.setBackground(new java.awt.Color(237, 241, 249));
@@ -75,6 +83,20 @@ public class Supplierdashboard extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(237, 241, 249));
         jLabel13.setText("UPDATE ORDER STATUS");
         jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 190, 50));
+
+        name.setBackground(new java.awt.Color(237, 241, 249));
+        name.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        name.setForeground(new java.awt.Color(237, 241, 249));
+        name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        name.setText("USER");
+        jPanel3.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 220, 30));
+
+        email.setBackground(new java.awt.Color(237, 241, 249));
+        email.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        email.setForeground(new java.awt.Color(237, 241, 249));
+        email.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        email.setText("EMAIL");
+        jPanel3.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 220, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 500));
 
@@ -97,6 +119,13 @@ public class Supplierdashboard extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+         landingPage log = new landingPage();
+         log.setLocationRelativeTo(null);
+         log.setVisible(true);
+         this.dispose();
+    }//GEN-LAST:event_jLabel12MouseClicked
 
     /**
      * @param args the command line arguments
@@ -134,7 +163,7 @@ public class Supplierdashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel email;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -144,5 +173,6 @@ public class Supplierdashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel name;
     // End of variables declaration//GEN-END:variables
 }

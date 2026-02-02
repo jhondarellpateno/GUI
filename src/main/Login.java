@@ -170,7 +170,7 @@ public class Login extends javax.swing.JFrame {
             String type = user.get("u_type").toString();
             String emails = user.get("u_email").toString();
 
-            if (stat.equals("Pending")) {
+            if (stat.equals("PENDING")) {
                 JOptionPane.showMessageDialog(null, "Account is pending. Please contact admin for approval.");
             } else {
                 JOptionPane.showMessageDialog(null, "Hello " + name + "!\nLOGIN SUCCESS!");

@@ -185,9 +185,9 @@ public class Signup extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Email already exists. Please enter another email.");
         } else {
             String hash = db.hashPassword(pass);
-            String sql = "INSERT INTO tbl_user (u_name, u_email, u_pass, u_status) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO tbl_user (u_name, u_email, u_pass, u_status, u_type) VALUES (?, ?, ?, ?, ?)";
 
-            db.addRecord(sql, name, email, hash, "PENDING");
+            db.addRecord(sql, name, email, hash, "PENDING", "User");
 
             JOptionPane.showMessageDialog(null, "Account Successfully Created!");
 

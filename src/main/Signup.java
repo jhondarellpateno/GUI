@@ -187,7 +187,7 @@ public class Signup extends javax.swing.JFrame {
             String hash = db.hashPassword(pass);
             String sql = "INSERT INTO tbl_user (u_name, u_email, u_pass, u_status, u_type) VALUES (?, ?, ?, ?, ?)";
 
-            db.addRecord(sql, name, email, hash, "PENDING", "User");
+            db.addRecord(sql, name, email, hash, "PENDING", "Manager");
 
             JOptionPane.showMessageDialog(null, "Account Successfully Created!");
 

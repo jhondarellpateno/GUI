@@ -121,16 +121,22 @@ public class config {
         }
     }
 
-    public void displayData(String sql, javax.swing.JTable table) {
+    public void displayData(String sql, javax.swing.JTable table, Object... values) {
         try (Connection conn = connectDB();
-                PreparedStatement pstmt = conn.prepareStatement(sql);
-                ResultSet rs = pstmt.executeQuery()) {
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            // This line automatically maps the Resultset to your JTable
-            table.setModel(DbUtils.resultSetToTableModel(rs));
+            // Set the parameters for the search
+            for (int i = 0; i < values.length; i++) {
+                pstmt.setObject(i + 1, values[i]);
+            }
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                // Automatically maps the filtered ResultSet to your JTable
+                table.setModel(DbUtils.resultSetToTableModel(rs));
+            }
 
         } catch (SQLException e) {
-            System.out.println("Error displaying data: " + e.getMessage());
+            System.out.println("Error filtering data: " + e.getMessage());
         }
     }
 
@@ -167,4 +173,5 @@ public class config {
             System.out.println("Error updating record: " + e.getMessage());
         }
     }
+    
 }

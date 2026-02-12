@@ -43,10 +43,13 @@ public class Signup extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jemail1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -112,6 +115,34 @@ public class Signup extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 410, 500));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/download_1.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 20, 380, 290));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(189, 195, 199));
+        jLabel5.setText("O     S      M");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, 60));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(149, 165, 166));
+        jLabel11.setText("ORDER");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, 40));
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(149, 165, 166));
+        jLabel15.setText("SUPPLIER");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, -1, 40));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(149, 165, 166));
+        jLabel14.setText("MANAGEMENT");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 300, -1, 40));
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(149, 165, 166));
+        jLabel16.setText("SYSTEM");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 160, 40));
+
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("< BACK");
@@ -122,20 +153,7 @@ public class Signup extends javax.swing.JFrame {
         });
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 3, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(78, 102, 173));
-        jLabel6.setText("SUPPLIER MANAGED.\"");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 190, 20));
-
-        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 3, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(78, 102, 173));
-        jLabel5.setText("\"ORDERS SIMPLIFIED,");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 180, 20));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logoo.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sidebg.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/leftbackground.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -143,7 +161,7 @@ public class Signup extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        Login logFrame = new Login();
+        login logFrame = new login();
         logFrame.setLocationRelativeTo(null);
         logFrame.setVisible(true);
         this.dispose();
@@ -243,13 +261,16 @@ public class Signup extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

@@ -27,6 +27,8 @@ public class landingPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -43,53 +45,72 @@ public class landingPage extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(189, 195, 199));
+        jLabel11.setText("_______________________________________________");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, 60));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(127, 179, 213));
+        jLabel10.setText("ORDER SUPPLIER MANAGEMENT SYSYEM");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, 30));
+
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(10, 37, 64));
+        jLabel9.setForeground(new java.awt.Color(149, 165, 166));
         jLabel9.setText("Is Here.");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, 40));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, -1, 40));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(51, 51, 255));
+        jLabel8.setForeground(new java.awt.Color(127, 179, 213));
         jLabel8.setText("Digital Management");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, 40));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, 40));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(207, 216, 220));
         jLabel7.setText("Collaboration.");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, -1, 20));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, -1, 20));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel6.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(207, 216, 220));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("OSM System provides the ultimate platform for");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, 20));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 300, 20));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(207, 216, 220));
         jLabel3.setText("Data-driven results and streamlined team");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, -1, 30));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(10, 37, 64));
+        jLabel4.setForeground(new java.awt.Color(189, 195, 199));
         jLabel4.setText("The Next Generation of ");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, 60));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, -1, 60));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(207, 216, 220));
         jLabel5.setText("Built with precision and powered by efficiency,");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, -1, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logooo.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, -1, 170));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, -10, 60, 90));
 
         jToggleButton1.setBackground(new java.awt.Color(78, 102, 173));
         jToggleButton1.setForeground(new java.awt.Color(237, 241, 249));
         jToggleButton1.setText("LOGIN");
+        jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jToggleButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jToggleButton1MouseExited(evt);
+            }
+        });
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 30, -1, 30));
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 70, 30));
 
         get.setBackground(new java.awt.Color(78, 102, 173));
         get.setForeground(new java.awt.Color(237, 241, 249));
@@ -107,12 +128,12 @@ public class landingPage extends javax.swing.JFrame {
                 getActionPerformed(evt);
             }
         });
-        getContentPane().add(get, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 130, 40));
+        getContentPane().add(get, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, 140, 40));
 
         jLabel1.setForeground(new java.awt.Color(10, 37, 64));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/landingbackground.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background.png"))); // NOI18N
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, -1, 500));
 
         pack();
         setLocationRelativeTo(null);
@@ -126,7 +147,7 @@ public class landingPage extends javax.swing.JFrame {
     }//GEN-LAST:event_getActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        Login loginFrame = new Login();
+        login loginFrame = new login();
         loginFrame.setLocationRelativeTo(null);
         loginFrame.setVisible(true);
         this.dispose();
@@ -141,6 +162,16 @@ public class landingPage extends javax.swing.JFrame {
     private void getMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_getMouseExited
         get.setBackground(new java.awt.Color(78, 102, 173));
     }//GEN-LAST:event_getMouseExited
+
+    private void jToggleButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseEntered
+        if (!jToggleButton1.isSelected()) {
+            jToggleButton1.setBackground(new java.awt.Color(10, 37, 64));
+        }
+    }//GEN-LAST:event_jToggleButton1MouseEntered
+
+    private void jToggleButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseExited
+        jToggleButton1.setBackground(new java.awt.Color(78, 102, 173));
+    }//GEN-LAST:event_jToggleButton1MouseExited
 
     /**
      * @param args the command line arguments
@@ -180,6 +211,8 @@ public class landingPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton get;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

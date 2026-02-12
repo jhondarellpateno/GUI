@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import main.Login;
+import main.login;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -61,10 +61,7 @@ public class config {
             }
 
             pstmt.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Record added successfully!");
-            Login login = new Login();
-            login.setVisible(true);
-            login.setLocationRelativeTo(null);
+
 
         } catch (SQLException e) {
             System.out.println("Error adding record: " + e.getMessage());
@@ -173,5 +170,25 @@ public class config {
             System.out.println("Error updating record: " + e.getMessage());
         }
     }
-    
+
+    public void deleteRecord(String sql, Object... values) {
+        try (Connection conn = this.connectDB();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            // Loop through the values and set them in the prepared statement dynamically
+            for (int i = 0; i < values.length; i++) {
+                if (values[i] instanceof Integer) {
+                    pstmt.setInt(i + 1, (Integer) values[i]); // If the value is Integer
+                } else {
+                    pstmt.setString(i + 1, values[i].toString()); // Default to String for other types
+                }
+            }
+
+            pstmt.executeUpdate();
+            System.out.println("Record deleted successfully!");
+        } catch (SQLException e) {
+            System.out.println("Error deleting record: " + e.getMessage());
+        }
+    }
+
 }

@@ -106,11 +106,11 @@ public class accounts extends javax.swing.JFrame {
             }
         });
         tableAccounts.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-                tableAccountsCaretPositionChanged(evt);
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 tableAccountsInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                tableAccountsCaretPositionChanged(evt);
             }
         });
         tableAccounts.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -129,6 +129,11 @@ public class accounts extends javax.swing.JFrame {
         backg.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 190, 50));
 
         jButton2.setText("Add");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         backg.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 70, 30));
 
         Approve.setText("Approve");
@@ -169,6 +174,11 @@ public class accounts extends javax.swing.JFrame {
         backg.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 70, 30));
 
         jButton6.setText("Update");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         backg.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 70, 30));
 
         getContentPane().add(backg, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 560, 500));
@@ -416,6 +426,30 @@ public class accounts extends javax.swing.JFrame {
     private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
         jLabel5.setBackground(new java.awt.Color(44, 62, 80));
     }//GEN-LAST:event_jLabel5MouseExited
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        addUser add = new addUser();
+        add.setLocationRelativeTo(null);
+        add.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        int selectedRow = tableAccounts.getSelectedRow();
+
+        DefaultTableModel model = (DefaultTableModel) tableAccounts.getModel();
+
+        String id = model.getValueAt(selectedRow, 0).toString();
+        String newName = model.getValueAt(selectedRow, 1).toString();
+        String newEmail = model.getValueAt(selectedRow, 2).toString();
+        String newType = model.getValueAt(selectedRow, 3).toString();
+
+        config conf = new config();
+        String sql = "UPDATE tbl_user SET u_name = ?, u_email = ?, u_type = ? WHERE u_id = ?";
+        conf.updateRecord(sql, newName, newEmail, newType, id);
+
+        JOptionPane.showMessageDialog(null, "Account for " + newName + " Updated Successfully!");
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments

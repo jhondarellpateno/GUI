@@ -66,13 +66,14 @@ public class accounts extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         back = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        image = new javax.swing.JLabel();
         email1 = new javax.swing.JLabel();
         name1 = new javax.swing.JLabel();
-        approve = new javax.swing.JLabel();
-        approve1 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        approve = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        approve1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -106,11 +107,11 @@ public class accounts extends javax.swing.JFrame {
             }
         });
         tableAccounts.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                tableAccountsInputMethodTextChanged(evt);
-            }
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
                 tableAccountsCaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                tableAccountsInputMethodTextChanged(evt);
             }
         });
         tableAccounts.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -151,6 +152,9 @@ public class accounts extends javax.swing.JFrame {
             }
         });
         txtSearchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchFieldKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtSearchFieldKeyTyped(evt);
             }
@@ -191,8 +195,8 @@ public class accounts extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
+        jPanel3.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
         email1.setBackground(new java.awt.Color(237, 241, 249));
         email1.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
@@ -207,60 +211,6 @@ public class accounts extends javax.swing.JFrame {
         name1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name1.setText("USER");
         jPanel3.add(name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 220, 30));
-
-        approve.setBackground(new java.awt.Color(237, 241, 249));
-        approve.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        approve.setForeground(new java.awt.Color(237, 241, 249));
-        approve.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        approve.setText("DASHBOARD");
-        approve.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                approveMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                approveMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                approveMouseExited(evt);
-            }
-        });
-        jPanel3.add(approve, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 220, 30));
-
-        approve1.setBackground(new java.awt.Color(237, 241, 249));
-        approve1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        approve1.setForeground(new java.awt.Color(237, 241, 249));
-        approve1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        approve1.setText("PROFILE");
-        approve1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                approve1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                approve1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                approve1MouseExited(evt);
-            }
-        });
-        jPanel3.add(approve1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 220, 30));
-
-        jLabel8.setBackground(new java.awt.Color(237, 241, 249));
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(237, 241, 249));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("ACCOUNTS");
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel8MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel8MouseExited(evt);
-            }
-        });
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 220, 30));
 
         jLabel5.setBackground(new java.awt.Color(237, 241, 249));
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -280,11 +230,83 @@ public class accounts extends javax.swing.JFrame {
         });
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 412, 230, 30));
 
+        jLabel8.setBackground(new java.awt.Color(237, 241, 249));
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(237, 241, 249));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("ACCOUNTS");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel8MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel8MouseExited(evt);
+            }
+        });
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 220, 30));
+
+        approve.setBackground(new java.awt.Color(237, 241, 249));
+        approve.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        approve.setForeground(new java.awt.Color(237, 241, 249));
+        approve.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        approve.setText("DASHBOARD");
+        approve.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                approveMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                approveMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                approveMouseExited(evt);
+            }
+        });
+        jPanel3.add(approve, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 220, 30));
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(237, 241, 249));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("PRODUCTS");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel7MouseExited(evt);
+            }
+        });
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 220, 30));
+
+        approve1.setBackground(new java.awt.Color(237, 241, 249));
+        approve1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        approve1.setForeground(new java.awt.Color(237, 241, 249));
+        approve1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        approve1.setText("PROFILE");
+        approve1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                approve1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                approve1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                approve1MouseExited(evt);
+            }
+        });
+        jPanel3.add(approve1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 220, 30));
+
         back.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 500));
 
         getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 500));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tableAccountsCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_tableAccountsCaretPositionChanged
@@ -363,53 +385,51 @@ public class accounts extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Account Approved!");
     }//GEN-LAST:event_ApproveActionPerformed
 
-    private void approveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseClicked
-        Admindashboard dash = new Admindashboard();
-        dash.setLocationRelativeTo(null);
-        dash.setVisible(true);
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        addUser add = new addUser();
+        add.setLocationRelativeTo(null);
+        add.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_approveMouseClicked
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void approveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseEntered
-        approve.setBackground(new java.awt.Color(26, 188, 156));
-        approve.setOpaque(true);
-    }//GEN-LAST:event_approveMouseEntered
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        config con = new config();
+        int selectedRow = tableAccounts.getSelectedRow();
 
-    private void approveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseExited
-        approve.setBackground(new java.awt.Color(44, 62, 80));
-    }//GEN-LAST:event_approveMouseExited
+        if (selectedRow != -1) {
+            DefaultTableModel model = (DefaultTableModel) tableAccounts.getModel();
 
-    private void approve1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approve1MouseClicked
-        profile prof = new profile();
-        prof.setLocationRelativeTo(null);
-        prof.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_approve1MouseClicked
+            int id = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
+            String newName = model.getValueAt(selectedRow, 1).toString();
+            String newEmail = model.getValueAt(selectedRow, 2).toString();
+            String newType = model.getValueAt(selectedRow, 4).toString();
 
-    private void approve1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approve1MouseEntered
-        approve1.setBackground(new java.awt.Color(26, 188, 156));
-        approve1.setOpaque(true);
-    }//GEN-LAST:event_approve1MouseEntered
+            String emailPattern = "^[A-Za-z0-9+_.-]+@(gmail\\.com|yahoo\\.com|outlook\\.com)$";
 
-    private void approve1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approve1MouseExited
-        approve1.setBackground(new java.awt.Color(44, 62, 80));
-    }//GEN-LAST:event_approve1MouseExited
+            // FIX 1: Check if email exists for OTHER users (u_id != ?)
+            String qry = "SELECT * FROM tbl_user WHERE u_email = ? AND u_id != ?";
+            java.util.List<java.util.Map<String, Object>> result = con.fetchRecords(qry, newEmail, id);
 
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        accounts acc = new accounts();
-        acc.setLocationRelativeTo(null);
-        acc.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel8MouseClicked
+            if (!result.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Email already exists. Please enter another email.");
+                return; // Stop execution
+            }
 
-    private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
-        jLabel8.setBackground(new java.awt.Color(26, 188, 156));
-        jLabel8.setOpaque(true);
-    }//GEN-LAST:event_jLabel8MouseEntered
+            // FIX 2: Validate pattern before updating
+            if (!newEmail.matches(emailPattern)) {
+                JOptionPane.showMessageDialog(null, "Invalid Email!");
+            } else {
+                String sql = "UPDATE tbl_user SET u_name = ?, u_email = ?, u_type = ? WHERE u_id = ?";
+                con.updateRecord(sql, newName, newEmail, newType, id);
 
-    private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
-        jLabel8.setBackground(new java.awt.Color(44, 62, 80));
-    }//GEN-LAST:event_jLabel8MouseExited
+                JOptionPane.showMessageDialog(null, "Account for " + newName + " Updated Successfully!");
+
+                // Refresh the table display here if needed
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row first!");
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         landingPage out = new landingPage();
@@ -427,29 +447,76 @@ public class accounts extends javax.swing.JFrame {
         jLabel5.setBackground(new java.awt.Color(44, 62, 80));
     }//GEN-LAST:event_jLabel5MouseExited
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        addUser add = new addUser();
-        add.setLocationRelativeTo(null);
-        add.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        int selectedRow = tableAccounts.getSelectedRow();
-
-        DefaultTableModel model = (DefaultTableModel) tableAccounts.getModel();
-
-        String id = model.getValueAt(selectedRow, 0).toString();
-        String newName = model.getValueAt(selectedRow, 1).toString();
-        String newEmail = model.getValueAt(selectedRow, 2).toString();
-        String newType = model.getValueAt(selectedRow, 3).toString();
-
+    private void txtSearchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchFieldKeyReleased
+        String searchText = txtSearchField.getText();
+        String sql = "SELECT * FROM tbl_user WHERE u_id LIKE ? OR u_name LIKE ? OR u_type LIKE ?";
         config conf = new config();
-        String sql = "UPDATE tbl_user SET u_name = ?, u_email = ?, u_type = ? WHERE u_id = ?";
-        conf.updateRecord(sql, newName, newEmail, newType, id);
+        conf.displayData(sql, tableAccounts, "%" + searchText + "%", "%" + searchText + "%", "%" + searchText + "%");
+    }//GEN-LAST:event_txtSearchFieldKeyReleased
 
-        JOptionPane.showMessageDialog(null, "Account for " + newName + " Updated Successfully!");
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        accounts acc = new accounts();
+        acc.setLocationRelativeTo(null);
+        acc.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
+        jLabel8.setBackground(new java.awt.Color(26, 188, 156));
+        jLabel8.setOpaque(true);
+    }//GEN-LAST:event_jLabel8MouseEntered
+
+    private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
+        jLabel8.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_jLabel8MouseExited
+
+    private void approveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseClicked
+        Admindashboard dash = new Admindashboard();
+        dash.setLocationRelativeTo(null);
+        dash.setVisible(true);
+        dash.dispose();
+    }//GEN-LAST:event_approveMouseClicked
+
+    private void approveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseEntered
+        approve.setBackground(new java.awt.Color(26, 188, 156));
+        approve.setOpaque(true);
+    }//GEN-LAST:event_approveMouseEntered
+
+    private void approveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseExited
+        approve.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_approveMouseExited
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        products prod = new products();
+        prod.setLocationRelativeTo(null);
+        prod.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
+        jLabel6.setBackground(new java.awt.Color(26, 188, 156));
+        jLabel6.setOpaque(true);
+    }//GEN-LAST:event_jLabel7MouseEntered
+
+    private void jLabel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseExited
+        jLabel6.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_jLabel7MouseExited
+
+    private void approve1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approve1MouseClicked
+        profile prof = new profile();
+        prof.setLocationRelativeTo(null);
+        prof.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_approve1MouseClicked
+
+    private void approve1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approve1MouseEntered
+        approve1.setBackground(new java.awt.Color(26, 188, 156));
+        approve1.setOpaque(true);
+    }//GEN-LAST:event_approve1MouseEntered
+
+    private void approve1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approve1MouseExited
+        approve1.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_approve1MouseExited
 
     /**
      * @param args the command line arguments
@@ -502,6 +569,7 @@ public class accounts extends javax.swing.JFrame {
     private javax.swing.JPanel backg;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel email1;
+    private javax.swing.JLabel image;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

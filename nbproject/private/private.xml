@@ -3,25 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/jhond/OneDrive/Desktop/GUI/src/config/UserSession.java</file>
-            <file>file:/C:/Users/jhond/OneDrive/Desktop/GUI/src/managerDashboard/Managerdashboard.java</file>
-            <file>file:/C:/Users/jhond/OneDrive/Desktop/GUI/src/config/config.java</file>
-            <file>file:/C:/Users/jhond/OneDrive/Desktop/GUI/src/images/leftbackground.png</file>
-            <file>file:/C:/Users/jhond/OneDrive/Desktop/GUI/src/images/logo.png</file>
-            <file>file:/C:/Users/jhond/OneDrive/Desktop/GUI/src/managerDashboard/managerProfile.java</file>
-            <file>file:/C:/Users/jhond/OneDrive/Desktop/GUI/src/images/profile.png</file>
-            <file>file:/C:/Users/jhond/OneDrive/Desktop/GUI/src/adminDashboard/Admindashboard.java</file>
-            <file>file:/C:/Users/jhond/OneDrive/Desktop/GUI/src/main/landingPage.java</file>
-            <file>file:/C:/Users/jhond/OneDrive/Desktop/GUI/src/managerDashboard/DeleteOrder.java</file>
-            <file>file:/C:/Users/jhond/OneDrive/Desktop/GUI/src/managerDashboard/UpdateOrder.java</file>
-            <file>file:/C:/Users/jhond/OneDrive/Desktop/GUI/src/adminDashboard/profile.java</file>
-            <file>file:/C:/Users/jhond/OneDrive/Desktop/GUI/src/images/download_1.png</file>
-            <file>file:/C:/Users/jhond/OneDrive/Desktop/GUI/src/adminDashboard/accounts.java</file>
-            <file>file:/C:/Users/jhond/OneDrive/Desktop/GUI/src/main/login.java</file>
-            <file>file:/C:/Users/jhond/OneDrive/Desktop/GUI/src/managerDashboard/ViewOrders.java</file>
-            <file>file:/C:/Users/jhond/OneDrive/Desktop/GUI/src/images/background.png</file>
-            <file>file:/C:/Users/jhond/OneDrive/Desktop/GUI/src/main/Signup.java</file>
-            <file>file:/C:/Users/jhond/OneDrive/Desktop/GUI/src/managerDashboard/addOrder.java</file>
+            <file>file:/C:/Users/USER25/Desktop/GUI/src/managerDashboard/ViewOrders.java</file>
+            <file>file:/C:/Users/USER25/Desktop/GUI/src/managerDashboard/Managerdashboard.java</file>
+            <file>file:/C:/Users/USER25/Desktop/GUI/src/adminDashboard/profile.java</file>
+            <file>file:/C:/Users/USER25/Desktop/GUI/src/main/Signup.java</file>
+            <file>file:/C:/Users/USER25/Desktop/GUI/src/adminDashboard/accounts.java</file>
+            <file>file:/C:/Users/USER25/Desktop/GUI/src/adminDashboard/addUser.java</file>
+            <file>file:/C:/Users/USER25/Desktop/GUI/src/main/landingPage.java</file>
+            <file>file:/C:/Users/USER25/Desktop/GUI/src/config/config.java</file>
+            <file>file:/C:/Users/USER25/Desktop/GUI/src/config/UserSession.java</file>
+            <file>file:/C:/Users/USER25/Desktop/GUI/src/managerDashboard/DeleteOrder.java</file>
+            <file>file:/C:/Users/USER25/Desktop/GUI/src/managerDashboard/UpdateOrder.java</file>
+            <file>file:/C:/Users/USER25/Desktop/GUI/src/managerDashboard/managerProfile.java</file>
+            <file>file:/C:/Users/USER25/Desktop/GUI/src/main/login.java</file>
+            <file>file:/C:/Users/USER25/Desktop/GUI/src/adminDashboard/addProduct.java</file>
+            <file>file:/C:/Users/USER25/Desktop/GUI/src/adminDashboard/editProf.java</file>
+            <file>file:/C:/Users/USER25/Desktop/GUI/src/managerDashboard/addOrder.java</file>
+            <file>file:/C:/Users/USER25/Desktop/GUI/src/adminDashboard/products.java</file>
+            <file>file:/C:/Users/USER25/Desktop/GUI/src/adminDashboard/Admindashboard.java</file>
         </group>
     </open-files>
 </project-private>

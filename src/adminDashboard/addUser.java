@@ -158,7 +158,7 @@ public class addUser extends javax.swing.JFrame {
         password.setText("PASSWORD: ");
         jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 510));
 
         pack();
         setLocationRelativeTo(null);

@@ -6,7 +6,12 @@
 package adminDashboard;
 
 import config.UserSession;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import main.login;
 import main.landingPage;
 
@@ -20,18 +25,23 @@ public class profile extends javax.swing.JFrame {
      * Creates new form profile
      */
     public profile() {
-        initComponents();
         if (UserSession.getU_id() == 0) {
-            JOptionPane.showMessageDialog(this, "Please Login First!");
+            JOptionPane.showMessageDialog(null, "Access Denied! Please Login First.");
 
             login login = new login();
             login.setVisible(true);
             login.setLocationRelativeTo(null);
             this.dispose();
-
+            return;
         }
 
-        if (UserSession.getU_name() != null) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        lblName.setText(UserSession.getU_name());
+        lblemail.setText(UserSession.getU_email());
+
+        if (UserSession.getU_name()
+                != null) {
             lblName.setText(UserSession.getU_name());
             lblemail.setText(UserSession.getU_email());
             lblType.setText(UserSession.getU_type());
@@ -40,7 +50,6 @@ public class profile extends javax.swing.JFrame {
     }
 
     private void displayUserData() {
-
         lblName.setText("Name: " + UserSession.getU_name());
         lblemail.setText("Email: " + UserSession.getU_email());
         lblType.setText("Type: " + UserSession.getU_type());
@@ -53,24 +62,25 @@ public class profile extends javax.swing.JFrame {
 
         backg = new javax.swing.JPanel();
         status = new javax.swing.JLabel();
-        name = new javax.swing.JLabel();
-        email = new javax.swing.JLabel();
+        name1 = new javax.swing.JLabel();
+        email1 = new javax.swing.JLabel();
         type = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        image = new javax.swing.JLabel();
         lblStatus = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         lblemail = new javax.swing.JLabel();
         lblType = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
         back = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        approve = new javax.swing.JLabel();
-        approve1 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        approve = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        approve3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,17 +95,17 @@ public class profile extends javax.swing.JFrame {
         status.setText("Status:");
         backg.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 70, 50));
 
-        name.setBackground(new java.awt.Color(237, 241, 249));
-        name.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        name.setForeground(new java.awt.Color(51, 102, 255));
-        name.setText("Name:");
-        backg.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 60, 50));
+        name1.setBackground(new java.awt.Color(237, 241, 249));
+        name1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        name1.setForeground(new java.awt.Color(51, 102, 255));
+        name1.setText("Name:");
+        backg.add(name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 60, 50));
 
-        email.setBackground(new java.awt.Color(237, 241, 249));
-        email.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        email.setForeground(new java.awt.Color(51, 102, 255));
-        email.setText("Email:");
-        backg.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 60, 50));
+        email1.setBackground(new java.awt.Color(237, 241, 249));
+        email1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        email1.setForeground(new java.awt.Color(51, 102, 255));
+        email1.setText("Email:");
+        backg.add(email1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 60, 50));
 
         type.setBackground(new java.awt.Color(237, 241, 249));
         type.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -103,16 +113,8 @@ public class profile extends javax.swing.JFrame {
         type.setText("Type:");
         backg.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 60, 50));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
-        backg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 100, 110));
-
-        jButton1.setText("SELECT IMAGE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        backg.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 120, -1));
+        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
+        backg.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, 100, 110));
 
         lblStatus.setBackground(new java.awt.Color(237, 241, 249));
         lblStatus.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -160,6 +162,9 @@ public class profile extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
         backg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 50));
 
+        jToggleButton1.setText("EDIT PROFILE");
+        backg.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, -1, -1));
+
         getContentPane().add(backg, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 560, 500));
 
         back.setBackground(new java.awt.Color(44, 62, 80));
@@ -197,41 +202,23 @@ public class profile extends javax.swing.JFrame {
         });
         back.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 412, 230, 30));
 
-        approve.setBackground(new java.awt.Color(237, 241, 249));
-        approve.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        approve.setForeground(new java.awt.Color(237, 241, 249));
-        approve.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        approve.setText("DASHBOARD");
-        approve.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel10.setBackground(new java.awt.Color(237, 241, 249));
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(237, 241, 249));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("LOG OUT");
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                approveMouseClicked(evt);
+                jLabel10MouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                approveMouseEntered(evt);
+                jLabel10MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                approveMouseExited(evt);
+                jLabel10MouseExited(evt);
             }
         });
-        back.add(approve, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 220, 30));
-
-        approve1.setBackground(new java.awt.Color(237, 241, 249));
-        approve1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        approve1.setForeground(new java.awt.Color(237, 241, 249));
-        approve1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        approve1.setText("PROFILE");
-        approve1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                approve1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                approve1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                approve1MouseExited(evt);
-            }
-        });
-        back.add(approve1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 220, 30));
+        back.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 412, 230, 30));
 
         jLabel8.setBackground(new java.awt.Color(237, 241, 249));
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -249,13 +236,30 @@ public class profile extends javax.swing.JFrame {
                 jLabel8MouseExited(evt);
             }
         });
-        back.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 220, 30));
+        back.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 220, 30));
 
-        jLabel6.setBackground(new java.awt.Color(237, 241, 249));
+        approve.setBackground(new java.awt.Color(237, 241, 249));
+        approve.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        approve.setForeground(new java.awt.Color(237, 241, 249));
+        approve.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        approve.setText("DASHBOARD");
+        approve.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                approveMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                approveMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                approveMouseExited(evt);
+            }
+        });
+        back.add(approve, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 220, 30));
+
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(237, 241, 249));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("LOG OUT");
+        jLabel6.setText("PRODUCTS");
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel6MouseClicked(evt);
@@ -267,7 +271,25 @@ public class profile extends javax.swing.JFrame {
                 jLabel6MouseExited(evt);
             }
         });
-        back.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 412, 230, 30));
+        back.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 220, 30));
+
+        approve3.setBackground(new java.awt.Color(237, 241, 249));
+        approve3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        approve3.setForeground(new java.awt.Color(237, 241, 249));
+        approve3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        approve3.setText("PROFILE");
+        approve3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                approve3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                approve3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                approve3MouseExited(evt);
+            }
+        });
+        back.add(approve3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 220, 30));
 
         getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 500));
 
@@ -290,9 +312,30 @@ public class profile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lblTypeMouseEntered
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jLabel10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseExited
+        jLabel5.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_jLabel10MouseExited
+
+    private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
+        jLabel5.setBackground(new java.awt.Color(255, 51, 51));
+        jLabel5.setOpaque(true);
+    }//GEN-LAST:event_jLabel10MouseEntered
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        landingPage out = new landingPage();
+        out.setLocationRelativeTo(null);
+        out.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
+        jLabel5.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_jLabel5MouseExited
+
+    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
+        jLabel5.setBackground(new java.awt.Color(255, 51, 51));
+        jLabel5.setOpaque(true);
+    }//GEN-LAST:event_jLabel5MouseEntered
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         landingPage out = new landingPage();
@@ -300,47 +343,6 @@ public class profile extends javax.swing.JFrame {
         out.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel5MouseClicked
-
-    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
-        jLabel5.setBackground(new java.awt.Color(255, 51, 51));
-        jLabel5.setOpaque(true);
-    }//GEN-LAST:event_jLabel5MouseEntered
-
-    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
-        jLabel5.setBackground(new java.awt.Color(44, 62, 80));
-    }//GEN-LAST:event_jLabel5MouseExited
-
-    private void approveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseClicked
-        Admindashboard dash = new Admindashboard();
-        dash.setLocationRelativeTo(null);
-        dash.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_approveMouseClicked
-
-    private void approveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseEntered
-        approve.setBackground(new java.awt.Color(26, 188, 156));
-        approve.setOpaque(true);
-    }//GEN-LAST:event_approveMouseEntered
-
-    private void approveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseExited
-        approve.setBackground(new java.awt.Color(44, 62, 80));
-    }//GEN-LAST:event_approveMouseExited
-
-    private void approve1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approve1MouseClicked
-        profile prof = new profile();
-        prof.setLocationRelativeTo(null);
-        prof.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_approve1MouseClicked
-
-    private void approve1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approve1MouseEntered
-        approve1.setBackground(new java.awt.Color(26, 188, 156));
-        approve1.setOpaque(true);
-    }//GEN-LAST:event_approve1MouseEntered
-
-    private void approve1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approve1MouseExited
-        approve1.setBackground(new java.awt.Color(44, 62, 80));
-    }//GEN-LAST:event_approve1MouseExited
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         accounts acc = new accounts();
@@ -358,56 +360,58 @@ public class profile extends javax.swing.JFrame {
         jLabel8.setBackground(new java.awt.Color(44, 62, 80));
     }//GEN-LAST:event_jLabel8MouseExited
 
+    private void approveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseClicked
+        Admindashboard dash = new Admindashboard();
+        dash.setLocationRelativeTo(null);
+        dash.setVisible(true);
+        dash.dispose();
+    }//GEN-LAST:event_approveMouseClicked
+
+    private void approveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseEntered
+        approve.setBackground(new java.awt.Color(26, 188, 156));
+        approve.setOpaque(true);
+    }//GEN-LAST:event_approveMouseEntered
+
+    private void approveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseExited
+        approve.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_approveMouseExited
+
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        landingPage out = new landingPage();
-        out.setLocationRelativeTo(null);
-        out.setVisible(true);
+        products prod = new products();
+        prod.setLocationRelativeTo(null);
+        prod.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
-        jLabel5.setBackground(new java.awt.Color(255, 51, 51));
-        jLabel5.setOpaque(true);
+        jLabel6.setBackground(new java.awt.Color(26, 188, 156));
+        jLabel6.setOpaque(true);
     }//GEN-LAST:event_jLabel6MouseEntered
 
     private void jLabel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseExited
-        jLabel5.setBackground(new java.awt.Color(44, 62, 80));
+        jLabel6.setBackground(new java.awt.Color(44, 62, 80));
     }//GEN-LAST:event_jLabel6MouseExited
+
+    private void approve3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approve3MouseClicked
+        profile prof = new profile();
+        prof.setLocationRelativeTo(null);
+        prof.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_approve3MouseClicked
+
+    private void approve3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approve3MouseEntered
+        approve1.setBackground(new java.awt.Color(26, 188, 156));
+        approve1.setOpaque(true);
+    }//GEN-LAST:event_approve3MouseEntered
+
+    private void approve3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approve3MouseExited
+        approve1.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_approve3MouseExited
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(profile.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(profile.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(profile.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(profile.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -420,22 +424,25 @@ public class profile extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel approve;
     private javax.swing.JLabel approve1;
+    private javax.swing.JLabel approve2;
+    private javax.swing.JLabel approve3;
     private javax.swing.JPanel back;
     private javax.swing.JPanel backg;
-    private javax.swing.JLabel email;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel email1;
+    private javax.swing.JLabel image;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblType;
     private javax.swing.JLabel lblemail;
-    private javax.swing.JLabel name;
+    private javax.swing.JLabel name1;
     private javax.swing.JLabel status;
     private javax.swing.JLabel type;
     // End of variables declaration//GEN-END:variables

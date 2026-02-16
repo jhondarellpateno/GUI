@@ -7,6 +7,15 @@ public class UserSession {
     private static String u_email;
     private static String u_status;
     private static String u_type;
+    private static String imagePath;
+
+    public static String getImagePath() {
+        return imagePath;
+    }
+
+    public static void setImagePath(String imagePath) {
+        UserSession.imagePath = imagePath;
+    }
 
     // REMOVE instance and getInstance()
 
@@ -56,5 +65,6 @@ public class UserSession {
         u_email = null;
         u_status = null;
         u_type = null;
+        imagePath = null;
     }
 }

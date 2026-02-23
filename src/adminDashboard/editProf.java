@@ -11,6 +11,7 @@ import java.awt.Image;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import main.login;
@@ -25,6 +26,8 @@ public class editProf extends javax.swing.JFrame {
     /**
      * Creates new form editProf
      */
+    private String currentImagePath = "";
+
     public editProf() {
         if (UserSession.getU_id() == 0) {
             JOptionPane.showMessageDialog(null, "Access Denied! Please Login First.");
@@ -59,7 +62,7 @@ public class editProf extends javax.swing.JFrame {
         name2 = new javax.swing.JLabel();
         email2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        image = new javax.swing.JLabel();
+        imagePath = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,8 +136,8 @@ public class editProf extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 120, -1));
 
-        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
-        jPanel1.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 100, 110));
+        imagePath.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
+        jPanel1.add(imagePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 100, 110));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,9 +164,10 @@ public class editProf extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        int userId = UserSession.getU_id();
         String name = jTextField2.getText();
         String email = jTextField3.getText();
-        String image = jButton1.getText();
+        String imagePath = this.currentImagePath;
 
         config conf = new config();
 
@@ -188,8 +192,8 @@ public class editProf extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Email already exists. Please enter another email.");
         }
 
-        String sql = "UPDATE tbl_user SET  u_name = ?, u_email = ?, image = ? WHERE u_id = ?";
-        conf.updateRecord(sql, name, email, image);
+        String sql = "UPDATE tbl_user SET  u_name = ?, u_email = ?, u_image = ? WHERE u_id = ?";
+        conf.updateRecord(sql, name, email, imagePath, userId);
 
         int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to update?", "Update_warning", JOptionPane.YES_NO_OPTION);
 
@@ -248,23 +252,18 @@ public class editProf extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFileChooser chooser = new JFileChooser();
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showOpenDialog(null);
 
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Image Files", "jpg", "png", "jpeg", "gif");
-        chooser.setFileFilter(filter);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            // Get the absolute path to save in DB
+            this.currentImagePath = selectedFile.getAbsolutePath();
 
-        int returnValue = chooser.showOpenDialog(null);
-
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = chooser.getSelectedFile();
-            String path = selectedFile.getAbsolutePath();
-
-            System.out.println("Selected Image Path: " + path);
-
-            ImageIcon mIcon = new ImageIcon(path);
-            Image img = mIcon.getImage().getScaledInstance(image.getWidth(), image.getHeight(), Image.SCALE_SMOOTH);
-
-            image.setIcon(new ImageIcon(img));
+            // Optional: Update the label to show the image preview
+            ImageIcon icon = new ImageIcon(this.currentImagePath);
+            Image img = icon.getImage().getScaledInstance(imagePath.getWidth(), imagePath.getHeight(), Image.SCALE_SMOOTH);
+            imagePath.setIcon(new ImageIcon(img));
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -305,7 +304,7 @@ public class editProf extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel email2;
-    private javax.swing.JLabel image;
+    private javax.swing.JLabel imagePath;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

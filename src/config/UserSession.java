@@ -17,8 +17,6 @@ public class UserSession {
         UserSession.imagePath = imagePath;
     }
 
-    // REMOVE instance and getInstance()
-
     public static int getU_id() {
         return u_id;
     }

@@ -35,6 +35,8 @@ public class products extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         name.setText(UserSession.getU_name());
         email.setText(UserSession.getU_email());
+        config con = new config ();
+        con.setProfileIcon(image, UserSession.getImagePath());
         displayOrders();
     }
 
@@ -394,7 +396,7 @@ public class products extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel8MouseExited
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        addUser add = new addUser();
+        addProduct add = new addProduct();
         add.setLocationRelativeTo(null);
         add.setVisible(true);
         this.dispose();

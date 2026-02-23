@@ -6,6 +6,7 @@
 package adminDashboard;
 
 import config.UserSession;
+import config.config;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import main.login;
@@ -29,11 +30,13 @@ public class Admindashboard extends javax.swing.JFrame {
             this.dispose();
             return;
         }
-
+        
         initComponents();
         this.setLocationRelativeTo(null);
         name.setText(UserSession.getU_name());
         email.setText(UserSession.getU_email());
+        config con = new config ();
+        con.setProfileIcon(image, UserSession.getImagePath());
     }
 
     /**
@@ -295,10 +298,7 @@ public class Admindashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_approve1MouseExited
 
     private void approveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseClicked
-        Admindashboard dash = new Admindashboard();
-        dash.setLocationRelativeTo(null);
-        dash.setVisible(true);
-        dash.dispose();
+
     }//GEN-LAST:event_approveMouseClicked
 
     private void approveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseEntered

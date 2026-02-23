@@ -6,6 +6,7 @@
 package managerDashboard;
 
 import config.UserSession;
+import config.config;
 import javax.swing.JOptionPane;
 import main.login;
 
@@ -30,6 +31,8 @@ public class Managerdashboard extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         name.setText(UserSession.getU_name());
         email.setText(UserSession.getU_email());
+        config con = new config ();
+        con.setProfileIcon(image, UserSession.getImagePath());
     }
 
     /**

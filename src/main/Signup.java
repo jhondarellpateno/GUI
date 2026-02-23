@@ -179,7 +179,7 @@ public class Signup extends javax.swing.JFrame {
             return;
         }
          
-        String emailPattern = "^[A-Za-z0-9+_.-]+@(gmail\\.com|yahoo\\.com|outlook\\.com)$";
+        String emailPattern = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[a-z]+$";
         
         if(!email.matches(emailPattern)){
             JOptionPane.showMessageDialog(null, "Invalid Email!");

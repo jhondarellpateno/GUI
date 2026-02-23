@@ -5,12 +5,20 @@
  */
 package config;
 
+import java.awt.Image;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Base64;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import main.login;
 import net.proteanit.sql.DbUtils;
@@ -61,7 +69,6 @@ public class config {
             }
 
             pstmt.executeUpdate();
-
 
         } catch (SQLException e) {
             System.out.println("Error adding record: " + e.getMessage());
@@ -190,5 +197,28 @@ public class config {
             System.out.println("Error deleting record: " + e.getMessage());
         }
     }
+
+    public String convertImageToBase64(String imagePath) throws IOException {
+        Path path = Paths.get(imagePath);
+        byte[] imageBytes = Files.readAllBytes(path);
+        // This converts the binary data into a standard Base64 string
+        return Base64.getEncoder().encodeToString(imageBytes);
+    }
+    
+    public void setProfileIcon(JLabel label, String path) {
+    if (path == null || path.isEmpty()) {
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png")));
+        return;
+    }
+    
+    try {
+        ImageIcon icon = new ImageIcon(path);
+        // Resizing the image to fit the label dimensions
+        Image img = icon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
+        label.setIcon(new ImageIcon(img));
+    } catch (Exception e) {
+        System.out.println("Error setting icon: " + e.getMessage());
+    }
+}
 
 }

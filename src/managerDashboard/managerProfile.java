@@ -5,7 +5,9 @@
  */
 package managerDashboard;
 
+import adminDashboard.editProf;
 import config.UserSession;
+import config.config;
 import javax.swing.JOptionPane;
 import main.login;
 
@@ -33,6 +35,8 @@ public class managerProfile extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         name.setText(UserSession.getU_name());
         email.setText(UserSession.getU_email());
+        config con = new config ();
+        con.setProfileIcon(image, UserSession.getImagePath());
 
         if (UserSession.getU_name()
                 != null) {
@@ -71,6 +75,7 @@ public class managerProfile extends javax.swing.JFrame {
         lblType = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jToggleButton2 = new javax.swing.JToggleButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
         back = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -112,7 +117,7 @@ public class managerProfile extends javax.swing.JFrame {
         backg.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 60, 50));
 
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
-        backg.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 100, 110));
+        backg.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 100, 110));
 
         lblStatus.setBackground(new java.awt.Color(237, 241, 249));
         lblStatus.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -172,6 +177,14 @@ public class managerProfile extends javax.swing.JFrame {
             }
         });
         backg.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, -1, -1));
+
+        jToggleButton1.setText("EDIT PROFILE");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+        backg.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, -1, -1));
 
         back.setBackground(new java.awt.Color(44, 62, 80));
         back.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -448,6 +461,13 @@ public class managerProfile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        editProf edit = new editProf();
+        edit.setLocationRelativeTo(null);
+        edit.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -505,6 +525,7 @@ public class managerProfile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblStatus;

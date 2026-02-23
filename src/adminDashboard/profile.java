@@ -6,12 +6,8 @@
 package adminDashboard;
 
 import config.UserSession;
-import java.awt.Image;
-import java.io.File;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
+import config.config;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import main.login;
 import main.landingPage;
 
@@ -39,6 +35,8 @@ public class profile extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         lblName.setText(UserSession.getU_name());
         lblemail.setText(UserSession.getU_email());
+        config con = new config();
+        con.setProfileIcon(image, UserSession.getImagePath());
 
         if (UserSession.getU_name()
                 != null) {
@@ -163,6 +161,11 @@ public class profile extends javax.swing.JFrame {
         backg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 50));
 
         jToggleButton1.setText("EDIT PROFILE");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
         backg.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, -1, -1));
 
         getContentPane().add(backg, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 560, 500));
@@ -400,13 +403,20 @@ public class profile extends javax.swing.JFrame {
     }//GEN-LAST:event_approve3MouseClicked
 
     private void approve3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approve3MouseEntered
-        approve1.setBackground(new java.awt.Color(26, 188, 156));
-        approve1.setOpaque(true);
+        approve3.setBackground(new java.awt.Color(26, 188, 156));
+        approve3.setOpaque(true);
     }//GEN-LAST:event_approve3MouseEntered
 
     private void approve3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approve3MouseExited
-        approve1.setBackground(new java.awt.Color(44, 62, 80));
+        approve3.setBackground(new java.awt.Color(44, 62, 80));
     }//GEN-LAST:event_approve3MouseExited
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        editProf edit = new editProf();
+        edit.setLocationRelativeTo(null);
+        edit.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -423,8 +433,6 @@ public class profile extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel approve;
-    private javax.swing.JLabel approve1;
-    private javax.swing.JLabel approve2;
     private javax.swing.JLabel approve3;
     private javax.swing.JPanel back;
     private javax.swing.JPanel backg;

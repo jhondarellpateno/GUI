@@ -36,6 +36,8 @@ public class UpdateOrder extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         name.setText(UserSession.getU_name());
         email.setText(UserSession.getU_email());
+        config con = new config ();
+        con.setProfileIcon(image, UserSession.getImagePath());
         displayOrd();
         displayProd();
     }

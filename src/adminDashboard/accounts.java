@@ -33,6 +33,8 @@ public class accounts extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         name1.setText(UserSession.getU_name());
         email1.setText(UserSession.getU_email());
+        config con = new config ();
+        con.setProfileIcon(image, UserSession.getImagePath());
         displayU();
     }
 
@@ -400,34 +402,10 @@ public class accounts extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) tableAccounts.getModel();
 
             int id = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
-            String newName = model.getValueAt(selectedRow, 1).toString();
-            String newEmail = model.getValueAt(selectedRow, 2).toString();
-            String newType = model.getValueAt(selectedRow, 4).toString();
-
-            String emailPattern = "^[A-Za-z0-9+_.-]+@(gmail\\.com|yahoo\\.com|outlook\\.com)$";
-
-            // FIX 1: Check if email exists for OTHER users (u_id != ?)
-            String qry = "SELECT * FROM tbl_user WHERE u_email = ? AND u_id != ?";
-            java.util.List<java.util.Map<String, Object>> result = con.fetchRecords(qry, newEmail, id);
-
-            if (!result.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Email already exists. Please enter another email.");
-                return; // Stop execution
-            }
-
-            // FIX 2: Validate pattern before updating
-            if (!newEmail.matches(emailPattern)) {
-                JOptionPane.showMessageDialog(null, "Invalid Email!");
-            } else {
-                String sql = "UPDATE tbl_user SET u_name = ?, u_email = ?, u_type = ? WHERE u_id = ?";
-                con.updateRecord(sql, newName, newEmail, newType, id);
-
-                JOptionPane.showMessageDialog(null, "Account for " + newName + " Updated Successfully!");
-
-                // Refresh the table display here if needed
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Please select a row first!");
+            updateUser update = new updateUser(id + "");
+            update.setLocationRelativeTo(null);
+            update.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -471,10 +449,10 @@ public class accounts extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel8MouseExited
 
     private void approveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseClicked
-        Admindashboard dash = new Admindashboard();
-        dash.setLocationRelativeTo(null);
-        dash.setVisible(true);
-        dash.dispose();
+        Admindashboard back = new Admindashboard();
+        back.setLocationRelativeTo(null);
+        back.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_approveMouseClicked
 
     private void approveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseEntered
@@ -494,12 +472,12 @@ public class accounts extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
-        jLabel6.setBackground(new java.awt.Color(26, 188, 156));
-        jLabel6.setOpaque(true);
+        jLabel7.setBackground(new java.awt.Color(26, 188, 156));
+        jLabel7.setOpaque(true);
     }//GEN-LAST:event_jLabel7MouseEntered
 
     private void jLabel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseExited
-        jLabel6.setBackground(new java.awt.Color(44, 62, 80));
+        jLabel7.setBackground(new java.awt.Color(44, 62, 80));
     }//GEN-LAST:event_jLabel7MouseExited
 
     private void approve1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approve1MouseClicked

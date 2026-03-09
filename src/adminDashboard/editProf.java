@@ -7,15 +7,18 @@ package adminDashboard;
 
 import config.UserSession;
 import config.config;
-import java.awt.Image;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import main.login;
-import managerDashboard.Managerdashboard;
 
 /**
  *
@@ -26,7 +29,7 @@ public class editProf extends javax.swing.JFrame {
     /**
      * Creates new form editProf
      */
-    private String currentImagePath = "";
+    private String path = "";
 
     public editProf() {
         if (UserSession.getU_id() == 0) {
@@ -40,6 +43,8 @@ public class editProf extends javax.swing.JFrame {
         }
 
         initComponents();
+        jTextField3.setText(UserSession.getU_email());
+        jTextField3.setEditable(false);
         this.setLocationRelativeTo(null);
     }
 
@@ -62,7 +67,7 @@ public class editProf extends javax.swing.JFrame {
         name2 = new javax.swing.JLabel();
         email2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        imagePath = new javax.swing.JLabel();
+        Pic = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,8 +141,10 @@ public class editProf extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 120, -1));
 
-        imagePath.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
-        jPanel1.add(imagePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 100, 110));
+        Pic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Pic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
+        Pic.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
+        jPanel1.add(Pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, 120, 110));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -167,7 +174,7 @@ public class editProf extends javax.swing.JFrame {
         int userId = UserSession.getU_id();
         String name = jTextField2.getText();
         String email = jTextField3.getText();
-        String imagePath = this.currentImagePath;
+        String imagePath = this.path;
 
         config conf = new config();
 
@@ -252,18 +259,42 @@ public class editProf extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        int result = fileChooser.showOpenDialog(null);
+
+        JFileChooser chooser = new JFileChooser();
+        int result = chooser.showOpenDialog(this);
 
         if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-            // Get the absolute path to save in DB
-            this.currentImagePath = selectedFile.getAbsolutePath();
+            File f = chooser.getSelectedFile();
 
-            // Optional: Update the label to show the image preview
-            ImageIcon icon = new ImageIcon(this.currentImagePath);
-            Image img = icon.getImage().getScaledInstance(imagePath.getWidth(), imagePath.getHeight(), Image.SCALE_SMOOTH);
-            imagePath.setIcon(new ImageIcon(img));
+            try {
+                BufferedImage original = ImageIO.read(f);
+
+                BufferedImage resized = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
+
+                Graphics2D g2d = resized.createGraphics();
+                g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+                g2d.drawImage(original, 0, 0, 100, 100, null);
+                g2d.dispose();
+
+                File dir = new File("src/images");
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
+
+                String fileName = "profile_" + System.currentTimeMillis() + ".png";
+                File savedFile = new File(dir, fileName);
+
+                ImageIO.write(resized, "png", savedFile);
+
+                path = "src/images/" + fileName;
+
+                Pic.setIcon(new ImageIcon(resized));
+
+                System.out.println("Image saved successfully to: " + path);
+
+            } catch (IOException ex) {
+                Logger.getLogger(EditProfile.class.getName()).log(Level.SEVERE, "Error saving profile image", ex);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -303,8 +334,8 @@ public class editProf extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Pic;
     private javax.swing.JLabel email2;
-    private javax.swing.JLabel imagePath;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

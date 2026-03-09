@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 public class Signup extends javax.swing.JFrame {
 
     /**
-     * Creates new form Signup
+     * Creates new form 
      */
     public Signup() {
         initComponents();
@@ -43,6 +43,8 @@ public class Signup extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jemail1 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel17 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -67,7 +69,7 @@ public class Signup extends javax.swing.JFrame {
                 jLabel4MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 60, 40));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 60, 40));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(78, 102, 173));
@@ -100,18 +102,34 @@ public class Signup extends javax.swing.JFrame {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, -1, -1));
+        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(78, 102, 173));
         jLabel12.setText("Already have an account?");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 190, 40));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 190, 40));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(78, 102, 173));
-        jLabel13.setText("Re-Enter Password");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 170, 40));
+        jLabel13.setText("User Type:");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 170, 40));
         jPanel1.add(jemail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 280, 30));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manager", "Supplier" }));
+        jComboBox1.setName(""); // NOI18N
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 90, 30));
+        jComboBox1.getAccessibleContext().setAccessibleName("Choose");
+        jComboBox1.getAccessibleContext().setAccessibleDescription("Choose");
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(78, 102, 173));
+        jLabel17.setText("Re-Enter Password");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 170, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 410, 500));
 
@@ -173,6 +191,8 @@ public class Signup extends javax.swing.JFrame {
         String email = jemail1.getText().trim();
         String pass = jpassword.getText();
         String confpass = jpassword2.getText();
+        String type = jComboBox1.getSelectedItem().toString();
+        
 
         if (name.isEmpty() || email.isEmpty() || pass.isEmpty()) {
             JOptionPane.showMessageDialog(null, "All fields are required to fill in!");
@@ -203,9 +223,9 @@ public class Signup extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Email already exists. Please enter another email.");
         } else {
             String hash = db.hashPassword(pass);
-            String sql = "INSERT INTO tbl_user (u_name, u_email, u_pass, u_status, u_type) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO tbl_user (u_name, u_email, u_pass, u_status, u_type, u_image) VALUES (?, ?, ?, ?, ?, ?)";
 
-            db.addRecord(sql, name, email, hash, "PENDING", "Manager");
+            db.addRecord(sql, name, email, hash, "PENDING", type, "images/profile.png");
 
             JOptionPane.showMessageDialog(null, "Account Successfully Created!");
 
@@ -222,6 +242,10 @@ public class Signup extends javax.swing.JFrame {
         back.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,6 +283,7 @@ public class Signup extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -267,6 +292,7 @@ public class Signup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

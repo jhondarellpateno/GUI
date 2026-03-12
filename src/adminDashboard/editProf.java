@@ -19,6 +19,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import main.login;
+import managerDashboard.Managerdashboard;
+import supplierDashboard.Supplierdashboard;
 
 /**
  *
@@ -71,10 +73,11 @@ public class editProf extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel1.setBackground(new java.awt.Color(237, 241, 249));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel2.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel2.setForeground(new java.awt.Color(44, 62, 80));
 
         jToggleButton2.setBackground(new java.awt.Color(51, 51, 51));
         jToggleButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -105,13 +108,15 @@ public class editProf extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
 
         jLabel1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(44, 62, 80));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("EDIT PROFILE");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 70, 230, 40));
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 230, 30));
         jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, 230, 30));
 
+        jToggleButton1.setBackground(new java.awt.Color(44, 62, 80));
+        jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
         jToggleButton1.setText("CONFIRM");
         jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -125,14 +130,18 @@ public class editProf extends javax.swing.JFrame {
         });
         jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, 120, 30));
 
-        name2.setForeground(new java.awt.Color(255, 255, 255));
+        name2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        name2.setForeground(new java.awt.Color(44, 62, 80));
         name2.setText("NAME:");
         jPanel1.add(name2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, -1, -1));
 
-        email2.setForeground(new java.awt.Color(255, 255, 255));
+        email2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        email2.setForeground(new java.awt.Color(44, 62, 80));
         email2.setText("EMAIL:");
         jPanel1.add(email2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, -1, -1));
 
+        jButton1.setBackground(new java.awt.Color(44, 62, 80));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("SELECT IMAGE");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,76 +152,59 @@ public class editProf extends javax.swing.JFrame {
 
         Pic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Pic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
-        Pic.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
+        Pic.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(44, 62, 80), 3));
         jPanel1.add(Pic, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, 120, 110));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        int userId = UserSession.getU_id();
+        int userId = UserSession.getInstance().getU_id();
         String name = jTextField2.getText();
         String email = jTextField3.getText();
         String imagePath = this.path;
 
         config conf = new config();
 
-        if (name.isEmpty() || email.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "All fields are required to fill in!");
+        if (name.isEmpty() && email.isEmpty() && (imagePath == null || imagePath.isEmpty())) {
+            JOptionPane.showMessageDialog(null, "Please fill in at least 1 field!");
             return;
         }
 
-        String emailPattern = "^[A-Za-z0-9+_.-]+@(gmail\\.com|yahoo\\.com|outlook\\.com)$";
-
-        if (!email.matches(emailPattern)) {
-            JOptionPane.showMessageDialog(null, "Invalid Email!");
-            jTextField2.setText("");
-            jTextField3.setText("");
-            return;
-
-        }
-        String qry = "SELECT * FROM tbl_user WHERE u_email = ?";
-        java.util.List<java.util.Map<String, Object>> result = conf.fetchRecords(qry, email);
-
-        if (!result.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Email already exists. Please enter another email.");
-        }
-
-        String sql = "UPDATE tbl_user SET  u_name = ?, u_email = ?, u_image = ? WHERE u_id = ?";
-        conf.updateRecord(sql, name, email, imagePath, userId);
-
-        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to update?", "Update_warning", JOptionPane.YES_NO_OPTION);
+        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to update?", "Update Warning", JOptionPane.YES_NO_OPTION);
 
         if (confirm == JOptionPane.YES_OPTION) {
+            String sql = "UPDATE tbl_user SET u_name = ?, u_email = ?, u_image = ? WHERE u_id = ?";
+            conf.updateRecord(sql, name, email, imagePath, userId);
 
-            jTextField2.setText("");
-            jTextField3.setText("");
+
+            UserSession.getInstance().setU_name(name);
+            UserSession.getInstance().setU_email(email);
 
             JOptionPane.showMessageDialog(null, "Updated Successfully!");
+            
+            Admindashboard admin = new Admindashboard();
+            admin.setLocationRelativeTo(null);
+            admin.setVisible(true);
+            admin.loadAdminStats();
+
+            this.dispose();
         }
-
-
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
@@ -223,38 +215,6 @@ public class editProf extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
-        config db = new config();
-        String name = jTextField2.getText();
-        String email = jTextField3.getText();
-
-        if (name.isEmpty() || email.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "All fields are required to fill in!");
-            return;
-        }
-
-        String emailPattern = "^[A-Za-z0-9+_.-]+@(gmail\\.com|yahoo\\.com|outlook\\.com)$";
-
-        if (!email.matches(emailPattern)) {
-            JOptionPane.showMessageDialog(null, "Invalid Email!");
-            jTextField2.setText("");
-            jTextField3.setText("");
-            return;
-
-        }
-        String qry = "SELECT * FROM tbl_user WHERE u_email = ?";
-        java.util.List<java.util.Map<String, Object>> result = db.fetchRecords(qry, email);
-
-        if (!result.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Email already exists. Please enter another email.");
-        }
-        String sql = "INSERT INTO tbl_user (u_name, u_email) VALUES (?, ?)";
-
-        db.updateRecord(sql, name, email);
-
-        JOptionPane.showMessageDialog(null, "Account Successfully Updated!");
-
-        jTextField2.setText("");
-        jTextField3.setText("");
 
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
@@ -293,7 +253,7 @@ public class editProf extends javax.swing.JFrame {
                 System.out.println("Image saved successfully to: " + path);
 
             } catch (IOException ex) {
-                Logger.getLogger(EditProfile.class.getName()).log(Level.SEVERE, "Error saving profile image", ex);
+                Logger.getLogger(editProf.class.getName()).log(Level.SEVERE, "Error saving profile image", ex);
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed

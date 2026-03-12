@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -64,10 +64,12 @@ public class addProduct extends javax.swing.JFrame {
         jSpinner1 = new javax.swing.JSpinner();
         status1 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
+        type1 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel1.setBackground(new java.awt.Color(237, 241, 249));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         name.setBackground(new java.awt.Color(237, 241, 249));
@@ -84,7 +86,7 @@ public class addProduct extends javax.swing.JFrame {
         email.setText("EMAIL");
         jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 220, 30));
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel2.setBackground(new java.awt.Color(44, 62, 80));
 
         jToggleButton2.setBackground(new java.awt.Color(51, 51, 51));
         jToggleButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -115,7 +117,7 @@ public class addProduct extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
 
         jLabel1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(44, 62, 80));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ADD PRODUCT");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 230, 40));
@@ -124,6 +126,8 @@ public class addProduct extends javax.swing.JFrame {
         jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 230, 30));
         jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 230, 30));
 
+        jToggleButton1.setBackground(new java.awt.Color(44, 62, 80));
+        jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
         jToggleButton1.setText("ADD PRODUCT");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,31 +136,43 @@ public class addProduct extends javax.swing.JFrame {
         });
         jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, 120, 30));
 
-        status.setForeground(new java.awt.Color(255, 255, 255));
+        status.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        status.setForeground(new java.awt.Color(44, 62, 80));
         status.setText("QUANTiTY:");
         jPanel1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, -1, -1));
 
-        name2.setForeground(new java.awt.Color(255, 255, 255));
+        name2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        name2.setForeground(new java.awt.Color(44, 62, 80));
         name2.setText("NAME:");
         jPanel1.add(name2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
 
-        email2.setForeground(new java.awt.Color(255, 255, 255));
+        email2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        email2.setForeground(new java.awt.Color(44, 62, 80));
         email2.setText("CATEGORY:");
         jPanel1.add(email2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
 
-        type.setForeground(new java.awt.Color(255, 255, 255));
-        type.setText("SIZE:");
-        jPanel1.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
+        type.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        type.setForeground(new java.awt.Color(44, 62, 80));
+        type.setText("COMPANY:");
+        jPanel1.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, -1, 20));
 
-        password.setForeground(new java.awt.Color(255, 255, 255));
+        password.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        password.setForeground(new java.awt.Color(44, 62, 80));
         password.setText("COLOR: ");
         jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, -1, -1));
         jPanel1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 120, 30));
 
-        status1.setForeground(new java.awt.Color(255, 255, 255));
+        status1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        status1.setForeground(new java.awt.Color(44, 62, 80));
         status1.setText("PRICE:");
         jPanel1.add(status1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, -1, -1));
         jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 230, 30));
+
+        type1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        type1.setForeground(new java.awt.Color(44, 62, 80));
+        type1.setText("SIZE:");
+        jPanel1.add(type1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
+        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 230, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -194,22 +210,36 @@ public class addProduct extends javax.swing.JFrame {
         String cat = jTextField3.getText();
         String name = jTextField2.getText();
         String size = jTextField1.getText();
+        String com = jTextField6.getText();
         String col = jTextField4.getText();
         String pri = jTextField5.getText();
         String quan = jSpinner1.getValue().toString();
 
-        if (name.isEmpty() || size.isEmpty() || col.isEmpty() || pri.isEmpty() || quan.isEmpty() || cat.isEmpty()) {
+        if (name.isEmpty() || size.isEmpty() || col.isEmpty() || pri.isEmpty() || quan.isEmpty() || cat.isEmpty() || com.isEmpty()) {
             JOptionPane.showMessageDialog(null, "All fields are required to fill in!");
             return;
         }
 
-        String sql = "INSERT INTO tbl_items (i_name, i_category, i_size, i_color, i_price, i_quantity) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tbl_items (i_name, i_category, i_size, i_color, i_price, i_quantity, i_company) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        db.addRecord(sql, name, cat, size, col, pri, quan, com);
 
-        db.addRecord(sql, name, cat, size, col, pri, quan);
+        int response = JOptionPane.showConfirmDialog(null, "Item Successfully Added! Do you want to add another product?", "Confirmation", JOptionPane.YES_NO_OPTION);
 
-        JOptionPane.showMessageDialog(null, "Item Successfully Added!");
-
-
+        if (response == JOptionPane.YES_OPTION) {
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+            jSpinner1.setValue(0);
+        } else {
+            Admindashboard back = new Admindashboard();
+            back.setLocationRelativeTo(null);
+            back.setVisible(true);
+            back.loadAdminStats();
+            this.dispose(); 
+        }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
@@ -267,6 +297,7 @@ public class addProduct extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JLabel name;
@@ -275,5 +306,6 @@ public class addProduct extends javax.swing.JFrame {
     private javax.swing.JLabel status;
     private javax.swing.JLabel status1;
     private javax.swing.JLabel type;
+    private javax.swing.JLabel type1;
     // End of variables declaration//GEN-END:variables
 }

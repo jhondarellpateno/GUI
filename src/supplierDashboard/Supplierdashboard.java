@@ -5,7 +5,10 @@
  */
 package supplierDashboard;
 
-import main.landingPage;
+import config.UserSession;
+import config.config;
+import javax.swing.JOptionPane;
+import main.login;
 
 /**
  *
@@ -16,14 +19,57 @@ public class Supplierdashboard extends javax.swing.JFrame {
     /**
      * Creates new form Supplierdashboard
      */
-    public Supplierdashboard(String names, String emails) {
+    public Supplierdashboard() {
+        if (UserSession.getU_id() == 0) {
+            JOptionPane.showMessageDialog(null, "Access Denied! Please Login First.");
+
+            login login = new login();
+            login.setVisible(true);
+            login.setLocationRelativeTo(null);
+            this.dispose();
+            return;
+        }
+
         initComponents();
-        name.setText(names);
-        email.setText(emails);
+        this.setLocationRelativeTo(null);
+        name.setText(UserSession.getU_name());
+        email.setText(UserSession.getU_email());
+        config con = new config();
+        con.setProfileIcon(image, UserSession.getImagePath());
+        loadSupplierStats();
     }
 
-    private Supplierdashboard() {
-        initComponents();
+    public void loadSupplierStats() {
+        config conf = new config();
+        try {
+            // Get the ID of the Supplier currently logged in
+            int loggedInSupplier = UserSession.getInstance().getU_id();
+
+            // 1. NO. OF ORDERS (Specific to this Supplier)
+            String countSql = "SELECT COUNT(*) AS total FROM tbl_order WHERE u_id = '" + loggedInSupplier + "'";
+            java.util.List<java.util.Map<String, Object>> countRes = conf.fetchRecords(countSql);
+            if (!countRes.isEmpty()) {
+                jLabel7.setText(countRes.get(0).get("total").toString());
+            }
+
+            // 2. TOTAL SALES (Specific to this Supplier)
+            String salesSql = "SELECT SUM(o_amountpay) AS total FROM tbl_order WHERE u_id = '" + loggedInSupplier + "'";
+            java.util.List<java.util.Map<String, Object>> salesRes = conf.fetchRecords(salesSql);
+            Object totalSales = salesRes.get(0).get("total");
+            jLabel9.setText("₱" + (totalSales != null ? String.format("%,.2f", Double.parseDouble(totalSales.toString())) : "0.00"));
+
+            // 3. ASSIGNED ORDERS Table
+            // This shows the list of items specifically sent to this company
+            String tableSql = "SELECT o_id, o_name, o_quantity, o_status, o_deliverydate "
+                    + "FROM tbl_order "
+                    + "WHERE u_id = '" + loggedInSupplier + "' "
+                    + "ORDER BY o_id DESC";
+
+            conf.displayData(tableSql, jTable1);
+
+        } catch (Exception e) {
+            System.out.println("Supplier Dashboard Sync Error: " + e.getMessage());
+        }
     }
 
     /**
@@ -35,97 +81,317 @@ public class Supplierdashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        image = new javax.swing.JLabel();
         name = new javax.swing.JLabel();
         email = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        line = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(237, 241, 249));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 28, -1, -1));
+        jPanel10.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(96, 190, 220));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
-
-        jLabel11.setBackground(new java.awt.Color(237, 241, 249));
-        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(237, 241, 249));
-        jLabel11.setText("VIEW PURCHASE ORDER AND STATUS");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 310, 50));
-
-        jLabel12.setBackground(new java.awt.Color(237, 241, 249));
-        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(237, 241, 249));
-        jLabel12.setText("LOG OUT");
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel12MouseClicked(evt);
-            }
-        });
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 190, 50));
-
-        jLabel13.setBackground(new java.awt.Color(237, 241, 249));
-        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(237, 241, 249));
-        jLabel13.setText("UPDATE ORDER STATUS");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 190, 50));
+        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png"))); // NOI18N
+        jPanel10.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
 
         name.setBackground(new java.awt.Color(237, 241, 249));
         name.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         name.setForeground(new java.awt.Color(237, 241, 249));
         name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         name.setText("USER");
-        jPanel3.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 220, 30));
+        jPanel10.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 220, 30));
 
         email.setBackground(new java.awt.Color(237, 241, 249));
         email.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         email.setForeground(new java.awt.Color(237, 241, 249));
         email.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         email.setText("EMAIL");
-        jPanel3.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 220, 30));
+        jPanel10.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 220, 30));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 500));
+        jLabel13.setBackground(new java.awt.Color(237, 241, 249));
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(236, 240, 241));
+        jLabel13.setText("Update Order Status");
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel13MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel13MouseExited(evt);
+            }
+        });
+        jPanel10.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 200, 30));
+
+        jLabel8.setBackground(new java.awt.Color(237, 241, 249));
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(237, 241, 249));
+        jLabel8.setText("Profile");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel8MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel8MouseExited(evt);
+            }
+        });
+        jPanel10.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 200, 30));
+
+        jLabel11.setBackground(new java.awt.Color(237, 241, 249));
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(236, 240, 241));
+        jLabel11.setText("View Purchase Order & Status");
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel11MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel11MouseExited(evt);
+            }
+        });
+        jPanel10.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 200, 30));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("____________________________________");
+        jPanel10.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+
+        line.setForeground(new java.awt.Color(255, 255, 255));
+        line.setText("____________________________________");
+        jPanel10.add(line, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, -1, -1));
+
+        jLabel5.setBackground(new java.awt.Color(237, 241, 249));
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(237, 241, 249));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Log Out");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel5MouseExited(evt);
+            }
+        });
+        jPanel10.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 200, 40));
 
         jPanel11.setBackground(new java.awt.Color(237, 241, 249));
+        jPanel11.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.darkGray, java.awt.Color.black, java.awt.Color.lightGray, java.awt.Color.gray));
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setBackground(new java.awt.Color(237, 241, 249));
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(96, 190, 220));
+        jLabel2.setForeground(new java.awt.Color(44, 62, 80));
         jLabel2.setText(" SUPPLIER DASHBOARD");
-        jPanel11.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 220, 50));
+        jPanel11.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 230, 50));
 
         jLabel4.setBackground(new java.awt.Color(237, 241, 249));
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(237, 241, 249));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
-        jPanel11.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 170, -1));
+        jPanel11.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 50, -1));
 
-        getContentPane().add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 580, 500));
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.darkGray, java.awt.Color.darkGray));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(44, 62, 80));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("ASSIGNED ORDER");
+        jPanel6.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 200, 26));
+
+        jTable1.setBackground(new java.awt.Color(44, 62, 80));
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel6.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, 140));
+
+        jPanel11.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 490, 210));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.darkGray, java.awt.Color.darkGray));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(44, 62, 80));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("TOTAL SALES");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 101, 142, 26));
+
+        jPanel3.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel3.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("#");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 128, 26));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 190, 80));
+
+        jPanel11.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 230, 130));
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.darkGray, java.awt.Color.darkGray));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("#");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 128, 26));
+
+        jPanel7.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 190, 80));
+
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(44, 62, 80));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("NO. OF ORDERS");
+        jPanel7.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 160, 26));
+
+        jPanel11.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 230, 130));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(230, 230, 230)
+                            .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-         landingPage log = new landingPage();
-         log.setLocationRelativeTo(null);
-         log.setVisible(true);
-         this.dispose();
-    }//GEN-LAST:event_jLabel12MouseClicked
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        Updateorderstat update = new Updateorderstat();
+        update.setLocationRelativeTo(null);
+        update.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void jLabel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseEntered
+        jLabel13.setBackground(new java.awt.Color(26, 188, 156));
+        jLabel13.setOpaque(true);
+    }//GEN-LAST:event_jLabel13MouseEntered
+
+    private void jLabel13MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseExited
+        jLabel13.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_jLabel13MouseExited
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        supplierProfile profile = new supplierProfile();
+        profile.setLocationRelativeTo(null);
+        profile.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
+        jLabel8.setBackground(new java.awt.Color(26, 188, 156));
+        jLabel8.setOpaque(true);
+    }//GEN-LAST:event_jLabel8MouseEntered
+
+    private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
+        jLabel8.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_jLabel8MouseExited
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        Viewpurchaseorderstat view = new Viewpurchaseorderstat();
+        view.setLocationRelativeTo(null);
+        view.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void jLabel11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseEntered
+        jLabel11.setBackground(new java.awt.Color(26, 188, 156));
+        jLabel11.setOpaque(true);
+    }//GEN-LAST:event_jLabel11MouseEntered
+
+    private void jLabel11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseExited
+        jLabel11.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_jLabel11MouseExited
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        UserSession.clearSession();
+
+        login out = new login();
+        out.setLocationRelativeTo(null);
+        out.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
+        jLabel5.setBackground(new java.awt.Color(255, 51, 51));
+        jLabel5.setOpaque(true);
+    }//GEN-LAST:event_jLabel5MouseEntered
+
+    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
+        jLabel5.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_jLabel5MouseExited
 
     /**
      * @param args the command line arguments
@@ -164,15 +430,29 @@ public class Supplierdashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel email;
+    private javax.swing.JLabel image;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel line;
     private javax.swing.JLabel name;
     // End of variables declaration//GEN-END:variables
 }

@@ -24,7 +24,6 @@ public class UpdateOrder extends javax.swing.JFrame {
     public UpdateOrder() {
         if (UserSession.getU_id() == 0) {
             JOptionPane.showMessageDialog(null, "Access Denied! Please Login First.");
-
             login login = new login();
             login.setVisible(true);
             login.setLocationRelativeTo(null);
@@ -36,8 +35,16 @@ public class UpdateOrder extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         name.setText(UserSession.getU_name());
         email.setText(UserSession.getU_email());
-        config con = new config ();
+        config con = new config();
         con.setProfileIcon(image, UserSession.getImagePath());
+        order.setEditable(false);
+        txtID.setEditable(false);
+        txtName.setEditable(false);
+        txtCategory.setEditable(false);
+        txtSize.setEditable(false);
+        txtColor.setEditable(false);
+        txtPrice.setEditable(false);
+        jTextField1.setEditable(false);
         displayOrd();
         displayProd();
     }
@@ -50,7 +57,7 @@ public class UpdateOrder extends javax.swing.JFrame {
 
     void displayProd() {
         config db = new config();
-        String sql = "SELECT i_id, i_name, i_category, i_size, i_color, i_price FROM tbl_items";
+        String sql = "SELECT i_id, i_name, i_category, i_size, i_color, i_price, i_quantity FROM tbl_items";
         db.displayData(sql, products);
     }
 
@@ -67,12 +74,14 @@ public class UpdateOrder extends javax.swing.JFrame {
         image = new javax.swing.JLabel();
         name = new javax.swing.JLabel();
         email = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        line = new javax.swing.JLabel();
+        add = new javax.swing.JLabel();
+        view = new javax.swing.JLabel();
+        update = new javax.swing.JLabel();
+        remove = new javax.swing.JLabel();
+        profile = new javax.swing.JLabel();
+        line1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -100,6 +109,8 @@ public class UpdateOrder extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
         jToggleButton2 = new javax.swing.JToggleButton();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -125,29 +136,104 @@ public class UpdateOrder extends javax.swing.JFrame {
         email.setText("EMAIL");
         jPanel10.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 220, 30));
 
-        jLabel13.setBackground(new java.awt.Color(237, 241, 249));
-        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("UPDATE SUPPLY ORDER");
-        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+        line.setForeground(new java.awt.Color(255, 255, 255));
+        line.setText("____________________________________");
+        jPanel10.add(line, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+
+        add.setBackground(new java.awt.Color(237, 241, 249));
+        add.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        add.setForeground(new java.awt.Color(236, 240, 241));
+        add.setText("Add Supply Order");
+        add.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel13MouseClicked(evt);
+                addMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel13MouseEntered(evt);
+                addMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel13MouseExited(evt);
+                addMouseExited(evt);
             }
         });
-        jPanel10.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 220, 30));
+        jPanel10.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 190, 30));
+
+        view.setBackground(new java.awt.Color(237, 241, 249));
+        view.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        view.setForeground(new java.awt.Color(236, 240, 241));
+        view.setText("View All Supply Order");
+        view.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                viewMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                viewMouseExited(evt);
+            }
+        });
+        jPanel10.add(view, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 190, 30));
+
+        update.setBackground(new java.awt.Color(237, 241, 249));
+        update.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        update.setForeground(new java.awt.Color(236, 240, 241));
+        update.setText("Update Supply Order");
+        update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                updateMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                updateMouseExited(evt);
+            }
+        });
+        jPanel10.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 190, 30));
+
+        remove.setBackground(new java.awt.Color(237, 241, 249));
+        remove.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        remove.setForeground(new java.awt.Color(237, 241, 249));
+        remove.setText("Remove Order");
+        remove.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                removeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                removeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                removeMouseExited(evt);
+            }
+        });
+        jPanel10.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 190, 30));
+
+        profile.setBackground(new java.awt.Color(237, 241, 249));
+        profile.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
+        profile.setForeground(new java.awt.Color(237, 241, 249));
+        profile.setText("Profile");
+        profile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                profileMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                profileMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                profileMouseExited(evt);
+            }
+        });
+        jPanel10.add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 190, 30));
+
+        line1.setForeground(new java.awt.Color(255, 255, 255));
+        line1.setText("____________________________________");
+        jPanel10.add(line1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, -1, -1));
 
         jLabel5.setBackground(new java.awt.Color(237, 241, 249));
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(237, 241, 249));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("LOG OUT");
+        jLabel5.setText("Log Out");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
@@ -159,79 +245,7 @@ public class UpdateOrder extends javax.swing.JFrame {
                 jLabel5MouseExited(evt);
             }
         });
-        jPanel10.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 220, 50));
-
-        jLabel8.setBackground(new java.awt.Color(237, 241, 249));
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(237, 241, 249));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("PROFILE");
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel8MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel8MouseExited(evt);
-            }
-        });
-        jPanel10.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 220, 30));
-
-        jLabel9.setBackground(new java.awt.Color(237, 241, 249));
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(237, 241, 249));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("REMOVE ORDER");
-        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel9MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel9MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel9MouseExited(evt);
-            }
-        });
-        jPanel10.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 220, 30));
-
-        jLabel12.setBackground(new java.awt.Color(237, 241, 249));
-        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("VIEW ALL SUPPLY ORDER");
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel12MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel12MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel12MouseExited(evt);
-            }
-        });
-        jPanel10.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 220, 30));
-
-        jLabel11.setBackground(new java.awt.Color(237, 241, 249));
-        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(236, 240, 241));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("ADD SUPPLY ORDER");
-        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel11MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel11MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel11MouseExited(evt);
-            }
-        });
-        jPanel10.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 220, 30));
+        jPanel10.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 200, 40));
 
         getContentPane().add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 500));
 
@@ -240,7 +254,7 @@ public class UpdateOrder extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(237, 241, 249));
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(96, 190, 220));
+        jLabel2.setForeground(new java.awt.Color(44, 62, 80));
         jLabel2.setText("ORDERS");
         jPanel11.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 230, 50));
 
@@ -286,21 +300,21 @@ public class UpdateOrder extends javax.swing.JFrame {
 
         jLabel6.setBackground(new java.awt.Color(237, 241, 249));
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(96, 190, 220));
+        jLabel6.setForeground(new java.awt.Color(44, 62, 80));
         jLabel6.setText("UPDATE SUPPLY ORDER");
         jPanel11.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 230, 50));
 
         jLabel7.setBackground(new java.awt.Color(237, 241, 249));
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(96, 190, 220));
+        jLabel7.setForeground(new java.awt.Color(44, 62, 80));
         jLabel7.setText("PRODUCTS");
         jPanel11.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 230, 50));
-        jPanel11.add(order, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 140, 30));
-        jPanel11.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 140, 30));
-        jPanel11.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 140, 30));
-        jPanel11.add(txtSize, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 140, 30));
-        jPanel11.add(txtCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 140, 30));
-        jPanel11.add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 140, 30));
+        jPanel11.add(order, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 140, 30));
+        jPanel11.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 140, 30));
+        jPanel11.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 400, 140, 30));
+        jPanel11.add(txtSize, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 140, 30));
+        jPanel11.add(txtCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, 140, 30));
+        jPanel11.add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 140, 30));
 
         jToggleButton1.setText("UPDATE");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -308,33 +322,33 @@ public class UpdateOrder extends javax.swing.JFrame {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        jPanel11.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 440, 110, 40));
-        jPanel11.add(txtColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 140, 30));
+        jPanel11.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 440, 90, 40));
+        jPanel11.add(txtColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, 140, 30));
 
         jLabel1.setText("QUAN:");
-        jPanel11.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 40, 30));
+        jPanel11.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 440, 40, 30));
 
         jLabel.setText("OID:");
-        jPanel11.add(jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 30, 30));
+        jPanel11.add(jLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 30, 30));
 
         jLabel10.setText("PID:");
-        jPanel11.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 30, 30));
+        jPanel11.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 30, 30));
 
         jLabel15.setText("NAME:");
-        jPanel11.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 40, 30));
+        jPanel11.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 40, 30));
 
         jLabel16.setText("CAT:");
-        jPanel11.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 40, 30));
+        jPanel11.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 40, 30));
 
         jLabel17.setText("SIZE:");
-        jPanel11.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 30, 30));
+        jPanel11.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 30, 30));
 
         jLabel18.setText("COLOR:");
-        jPanel11.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 40, 30));
+        jPanel11.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 50, 30));
 
         jLabel19.setText("PRICE:");
-        jPanel11.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 40, 20));
-        jPanel11.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 430, 50, 30));
+        jPanel11.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 410, 40, 20));
+        jPanel11.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, 50, 30));
 
         jToggleButton2.setText("DASHBOARD");
         jToggleButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -348,6 +362,10 @@ public class UpdateOrder extends javax.swing.JFrame {
             }
         });
         jPanel11.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, -1, -1));
+        jPanel11.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, 130, 30));
+
+        jLabel8.setText("SUPPLIER");
+        jPanel11.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, 70, -1));
 
         getContentPane().add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 570, 500));
 
@@ -359,7 +377,8 @@ public class UpdateOrder extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) products.getModel();
         int selectedRow = products.getSelectedRow();
 
-        txtID.setText(model.getValueAt(selectedRow, 0).toString());
+        String pid = model.getValueAt(selectedRow, 0).toString();
+        txtID.setText(pid);
         txtName.setText(model.getValueAt(selectedRow, 1).toString());
         txtCategory.setText(model.getValueAt(selectedRow, 2).toString());
         txtSize.setText(model.getValueAt(selectedRow, 3).toString());
@@ -371,13 +390,51 @@ public class UpdateOrder extends javax.swing.JFrame {
         String qtyString = model.getValueAt(selectedRow, 6).toString();
         int qtyInt = Integer.parseInt(qtyString);
         jSpinner1.setValue(qtyInt);
+
+        try {
+            config db = new config();
+
+            String findCompanyQry = "SELECT i_company FROM tbl_items WHERE i_id = '" + pid + "'";
+            java.util.List<java.util.Map<String, Object>> itemResult = db.fetchRecords(findCompanyQry);
+
+            if (!itemResult.isEmpty()) {
+                String companyName = itemResult.get(0).get("i_company").toString();
+                String supplierQry = "SELECT u_id, u_name FROM tbl_user " + "WHERE u_company = '" + companyName + "' " + "AND u_type = 'Supplier' " + "ORDER BY RANDOM() LIMIT 1";
+
+                java.util.List<java.util.Map<String, Object>> supplierResult = db.fetchRecords(supplierQry);
+
+                if (!supplierResult.isEmpty()) {
+                    jTextField1.setText(supplierResult.get(0).get("u_name").toString());
+                    jTextField1.putClientProperty("supplier_id", supplierResult.get(0).get("u_id"));
+                } else {
+                    jTextField1.setText("No Supplier Found");
+                    jTextField1.putClientProperty("supplier_id", null);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error auto-filling supplier: " + e.getMessage());
+        }
     }//GEN-LAST:event_productsMouseClicked
 
     private void ordersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ordersMouseClicked
-        DefaultTableModel model = (DefaultTableModel) orders.getModel();
-        int selectedRow = orders.getSelectedRow();
+        DefaultTableModel orderModel = (DefaultTableModel) orders.getModel();
+        int selectedOrderRow = orders.getSelectedRow();
 
-        order.setText(model.getValueAt(selectedRow, 0).toString());
+        if (selectedOrderRow != -1) {
+            order.setText(orderModel.getValueAt(selectedOrderRow, 0).toString());
+            txtID.setText(orderModel.getValueAt(selectedOrderRow, 1).toString());
+            txtName.setText(orderModel.getValueAt(selectedOrderRow, 3).toString());
+            txtCategory.setText(orderModel.getValueAt(selectedOrderRow, 4).toString());
+            txtSize.setText(orderModel.getValueAt(selectedOrderRow, 5).toString());
+            txtColor.setText(orderModel.getValueAt(selectedOrderRow, 6).toString());
+            txtPrice.setText(orderModel.getValueAt(selectedOrderRow, 7).toString());
+
+            int currentOrderQty = Integer.parseInt(orderModel.getValueAt(selectedOrderRow, 8).toString());
+            jSpinner1.setValue(currentOrderQty);
+
+            order.putClientProperty("old_qty", currentOrderQty);
+            order.putClientProperty("current_status", orderModel.getValueAt(selectedOrderRow, 10).toString());
+        }
     }//GEN-LAST:event_ordersMouseClicked
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
@@ -388,16 +445,59 @@ public class UpdateOrder extends javax.swing.JFrame {
         String si = txtSize.getText();
         String col = txtColor.getText();
         String pri = txtPrice.getText();
-        String qty = jSpinner1.getValue().toString();
 
-        config conf = new config();
+        int requestedQty = Integer.parseInt(jSpinner1.getValue().toString());
 
-        String sql = "UPDATE tbl_order SET i_id = ?, o_name = ?, o_category = ?, o_size = ?, o_color = ?, o_price = ?, o_quantity = ? WHERE o_id = ?";
-        conf.updateRecord(sql, pid, name, cat, si, col, pri, qty, oid);
+        if (requestedQty <= 0) {
+            JOptionPane.showMessageDialog(null, "Quantity must be at least 1.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return; 
+        }
 
-        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to update Order #" + oid + "?", "Update_warning", JOptionPane.YES_NO_OPTION);
+        DefaultTableModel model = (DefaultTableModel) orders.getModel();
+        int selectedRow = orders.getSelectedRow();
 
+        if (selectedRow == -1 || oid.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please select an order from the table first.");
+            return;
+        }
+
+        int oldQty = Integer.parseInt(model.getValueAt(selectedRow, 8).toString());
+        Object statusObj = order.getClientProperty("current_status");
+        String currentStatus = (statusObj != null) ? statusObj.toString() : "";
+
+        if (!currentStatus.equalsIgnoreCase("PENDING")) {
+            JOptionPane.showMessageDialog(null, "Only PENDING orders can be updated.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int diff = oldQty - requestedQty;
+
+        if (diff < 0) {
+            config db = new config();
+            String checkSql = "SELECT i_quantity FROM tbl_items WHERE i_id = '" + pid + "'";
+            java.util.List<java.util.Map<String, Object>> item = db.fetchRecords(checkSql);
+
+            if (!item.isEmpty()) {
+                int currentStock = Integer.parseInt(item.get(0).get("i_quantity").toString());
+                if (Math.abs(diff) > currentStock) {
+                    JOptionPane.showMessageDialog(null, "Insufficient stock! Only " + currentStock + " more available.", "Stock Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+        }
+
+        int confirm = JOptionPane.showConfirmDialog(null, "Update Order #" + oid + "?", "Confirm", JOptionPane.YES_NO_OPTION);
         if (confirm == JOptionPane.YES_OPTION) {
+            config conf = new config();
+
+            String sql = "UPDATE tbl_order SET i_id = ?, o_name = ?, o_category = ?, o_size = ?, o_color = ?, o_price = ?, o_quantity = ? WHERE o_id = ?";
+            conf.updateRecord(sql, pid, name, cat, si, col, pri, requestedQty, oid);
+
+            String stockSql = "UPDATE tbl_items SET i_quantity = i_quantity + ? WHERE i_id = ?";
+            conf.updateRecord(stockSql, diff, pid);
+
+            displayOrd();
+            displayProd();
 
             order.setText("");
             txtID.setText("");
@@ -406,113 +506,11 @@ public class UpdateOrder extends javax.swing.JFrame {
             txtSize.setText("");
             txtColor.setText("");
             txtPrice.setText("");
-            jSpinner1.setValue("");
+            jSpinner1.setValue(0);
 
-            displayOrd();
-            displayProd();
-            JOptionPane.showMessageDialog(null, "Order " + oid + " has been updated in the database!");
+            JOptionPane.showMessageDialog(null, "Order and Stock updated successfully!");
         }
-
-        Managerdashboard back = new Managerdashboard();
-        back.setLocationRelativeTo(null);
-        back.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
-
-    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
-        jLabel5.setBackground(new java.awt.Color(44, 62, 80));
-    }//GEN-LAST:event_jLabel5MouseExited
-
-    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
-        jLabel5.setBackground(new java.awt.Color(255, 51, 51));
-        jLabel5.setOpaque(true);
-    }//GEN-LAST:event_jLabel5MouseEntered
-
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        UserSession.clearSession();
-
-        login out = new login();
-        out.setLocationRelativeTo(null);
-        out.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel5MouseClicked
-
-    private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
-        jLabel8.setBackground(new java.awt.Color(44, 62, 80));
-    }//GEN-LAST:event_jLabel8MouseExited
-
-    private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
-        jLabel8.setBackground(new java.awt.Color(26, 188, 156));
-        jLabel8.setOpaque(true);
-    }//GEN-LAST:event_jLabel8MouseEntered
-
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        managerProfile profile = new managerProfile();
-        profile.setLocationRelativeTo(null);
-        profile.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel8MouseClicked
-
-    private void jLabel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseExited
-        jLabel9.setBackground(new java.awt.Color(44, 62, 80));
-    }//GEN-LAST:event_jLabel9MouseExited
-
-    private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
-        jLabel9.setBackground(new java.awt.Color(26, 188, 156));
-        jLabel9.setOpaque(true);
-    }//GEN-LAST:event_jLabel9MouseEntered
-
-    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        DeleteOrder delete = new DeleteOrder();
-        delete.setLocationRelativeTo(null);
-        delete.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel9MouseClicked
-
-    private void jLabel13MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseExited
-        jLabel13.setBackground(new java.awt.Color(44, 62, 80));
-    }//GEN-LAST:event_jLabel13MouseExited
-
-    private void jLabel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseEntered
-        jLabel13.setBackground(new java.awt.Color(26, 188, 156));
-        jLabel13.setOpaque(true);
-    }//GEN-LAST:event_jLabel13MouseEntered
-
-    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-
-    }//GEN-LAST:event_jLabel13MouseClicked
-
-    private void jLabel11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseExited
-        jLabel11.setBackground(new java.awt.Color(44, 62, 80));
-    }//GEN-LAST:event_jLabel11MouseExited
-
-    private void jLabel11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseEntered
-        jLabel11.setBackground(new java.awt.Color(26, 188, 156));
-        jLabel11.setOpaque(true);
-    }//GEN-LAST:event_jLabel11MouseEntered
-
-    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-        addOrder order = new addOrder();
-        order.setLocationRelativeTo(null);
-        order.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel11MouseClicked
-
-    private void jLabel12MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseExited
-        jLabel12.setBackground(new java.awt.Color(44, 62, 80));
-    }//GEN-LAST:event_jLabel12MouseExited
-
-    private void jLabel12MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseEntered
-        jLabel12.setBackground(new java.awt.Color(26, 188, 156));
-        jLabel12.setOpaque(true);
-    }//GEN-LAST:event_jLabel12MouseEntered
-
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-        ViewOrders view = new ViewOrders();
-        view.setLocationRelativeTo(null);
-        view.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel12MouseClicked
 
     private void jToggleButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton2MouseClicked
         Managerdashboard dash = new Managerdashboard();
@@ -524,6 +522,104 @@ public class UpdateOrder extends javax.swing.JFrame {
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
+        addOrder order = new addOrder();
+        order.setLocationRelativeTo(null);
+        order.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_addMouseClicked
+
+    private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
+        add.setBackground(new java.awt.Color(26, 188, 156));
+        add.setOpaque(true);
+    }//GEN-LAST:event_addMouseEntered
+
+    private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
+        add.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_addMouseExited
+
+    private void viewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewMouseClicked
+        ViewOrders view = new ViewOrders();
+        view.setLocationRelativeTo(null);
+        view.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_viewMouseClicked
+
+    private void viewMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewMouseEntered
+        view.setBackground(new java.awt.Color(26, 188, 156));
+        view.setOpaque(true);
+    }//GEN-LAST:event_viewMouseEntered
+
+    private void viewMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewMouseExited
+        view.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_viewMouseExited
+
+    private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
+        UpdateOrder update = new UpdateOrder();
+        update.setLocationRelativeTo(null);
+        update.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_updateMouseClicked
+
+    private void updateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseEntered
+        update.setBackground(new java.awt.Color(26, 188, 156));
+        update.setOpaque(true);
+    }//GEN-LAST:event_updateMouseEntered
+
+    private void updateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseExited
+        update.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_updateMouseExited
+
+    private void removeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseClicked
+        DeleteOrder delete = new DeleteOrder();
+        delete.setLocationRelativeTo(null);
+        delete.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_removeMouseClicked
+
+    private void removeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseEntered
+        remove.setBackground(new java.awt.Color(26, 188, 156));
+        remove.setOpaque(true);
+    }//GEN-LAST:event_removeMouseEntered
+
+    private void removeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseExited
+        remove.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_removeMouseExited
+
+    private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
+        managerProfile profile = new managerProfile();
+        profile.setLocationRelativeTo(null);
+        profile.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_profileMouseClicked
+
+    private void profileMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseEntered
+        profile.setBackground(new java.awt.Color(26, 188, 156));
+        profile.setOpaque(true);
+    }//GEN-LAST:event_profileMouseEntered
+
+    private void profileMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseExited
+        profile.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_profileMouseExited
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        UserSession.clearSession();
+
+        login out = new login();
+        out.setLocationRelativeTo(null);
+        out.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
+        jLabel5.setBackground(new java.awt.Color(255, 51, 51));
+        jLabel5.setOpaque(true);
+    }//GEN-LAST:event_jLabel5MouseEntered
+
+    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
+        jLabel5.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_jLabel5MouseExited
 
     /**
      * @param args the command line arguments
@@ -569,14 +665,12 @@ public class UpdateOrder extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel add;
     private javax.swing.JLabel email;
     private javax.swing.JLabel image;
     private javax.swing.JLabel jLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -588,23 +682,29 @@ public class UpdateOrder extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JLabel line;
+    private javax.swing.JLabel line1;
     private javax.swing.JLabel name;
     private javax.swing.JTextField order;
     private javax.swing.JTable orders;
     private javax.swing.JTable products;
+    private javax.swing.JLabel profile;
+    private javax.swing.JLabel remove;
     private javax.swing.JTextField txtCategory;
     private javax.swing.JTextField txtColor;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPrice;
     private javax.swing.JTextField txtSize;
+    private javax.swing.JLabel update;
+    private javax.swing.JLabel view;
     // End of variables declaration//GEN-END:variables
 }

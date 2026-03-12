@@ -35,7 +35,7 @@ public class products extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         name.setText(UserSession.getU_name());
         email.setText(UserSession.getU_email());
-        config con = new config ();
+        config con = new config();
         con.setProfileIcon(image, UserSession.getImagePath());
         displayOrders();
     }
@@ -70,11 +70,13 @@ public class products extends javax.swing.JFrame {
         image = new javax.swing.JLabel();
         email = new javax.swing.JLabel();
         name = new javax.swing.JLabel();
+        line1 = new javax.swing.JLabel();
+        line = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        approve1 = new javax.swing.JLabel();
-        approve = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        dashboard = new javax.swing.JLabel();
+        prods = new javax.swing.JLabel();
+        accs = new javax.swing.JLabel();
+        profs = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,7 +85,7 @@ public class products extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(237, 241, 249));
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(96, 190, 220));
+        jLabel2.setForeground(new java.awt.Color(44, 62, 80));
         jLabel2.setText("PRODUCTS");
         jPanel11.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 190, 50));
 
@@ -174,11 +176,19 @@ public class products extends javax.swing.JFrame {
         name.setText("USER");
         jPanel3.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 220, 30));
 
+        line1.setForeground(new java.awt.Color(255, 255, 255));
+        line1.setText("____________________________________");
+        jPanel3.add(line1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+
+        line.setForeground(new java.awt.Color(255, 255, 255));
+        line.setText("____________________________________");
+        jPanel3.add(line, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, -1, -1));
+
         jLabel5.setBackground(new java.awt.Color(237, 241, 249));
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(237, 241, 249));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("LOG OUT");
+        jLabel5.setText("Log Out");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
@@ -190,78 +200,74 @@ public class products extends javax.swing.JFrame {
                 jLabel5MouseExited(evt);
             }
         });
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 412, 230, 30));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 200, 40));
 
-        approve1.setBackground(new java.awt.Color(237, 241, 249));
-        approve1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        approve1.setForeground(new java.awt.Color(237, 241, 249));
-        approve1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        approve1.setText("PROFILE");
-        approve1.addMouseListener(new java.awt.event.MouseAdapter() {
+        dashboard.setBackground(new java.awt.Color(237, 241, 249));
+        dashboard.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        dashboard.setForeground(new java.awt.Color(237, 241, 249));
+        dashboard.setText("Dashboard");
+        dashboard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                approve1MouseClicked(evt);
+                dashboardMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                approve1MouseEntered(evt);
+                dashboardMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                approve1MouseExited(evt);
+                dashboardMouseExited(evt);
             }
         });
-        jPanel3.add(approve1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 220, 30));
+        jPanel3.add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 160, 30));
 
-        approve.setBackground(new java.awt.Color(237, 241, 249));
-        approve.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        approve.setForeground(new java.awt.Color(237, 241, 249));
-        approve.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        approve.setText("DASHBOARD");
-        approve.addMouseListener(new java.awt.event.MouseAdapter() {
+        prods.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        prods.setForeground(new java.awt.Color(237, 241, 249));
+        prods.setText("Products");
+        prods.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                approveMouseClicked(evt);
+                prodsMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                approveMouseEntered(evt);
+                prodsMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                approveMouseExited(evt);
+                prodsMouseExited(evt);
             }
         });
-        jPanel3.add(approve, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 220, 30));
+        jPanel3.add(prods, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 160, 30));
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(237, 241, 249));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("PRODUCTS");
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        accs.setBackground(new java.awt.Color(237, 241, 249));
+        accs.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        accs.setForeground(new java.awt.Color(237, 241, 249));
+        accs.setText("Accounts");
+        accs.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
+                accsMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel6MouseEntered(evt);
+                accsMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel6MouseExited(evt);
+                accsMouseExited(evt);
             }
         });
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 220, 30));
+        jPanel3.add(accs, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 160, 30));
 
-        jLabel8.setBackground(new java.awt.Color(237, 241, 249));
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(237, 241, 249));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("ACCOUNTS");
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+        profs.setBackground(new java.awt.Color(237, 241, 249));
+        profs.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        profs.setForeground(new java.awt.Color(237, 241, 249));
+        profs.setText("Profile");
+        profs.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
+                profsMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel8MouseEntered(evt);
+                profsMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel8MouseExited(evt);
+                profsMouseExited(evt);
             }
         });
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 220, 30));
+        jPanel3.add(profs, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 160, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -315,86 +321,6 @@ public class products extends javax.swing.JFrame {
         con.displayData(sql, items);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        landingPage out = new landingPage();
-        out.setLocationRelativeTo(null);
-        out.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel5MouseClicked
-
-    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
-        jLabel5.setBackground(new java.awt.Color(255, 51, 51));
-        jLabel5.setOpaque(true);
-    }//GEN-LAST:event_jLabel5MouseEntered
-
-    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
-        jLabel5.setBackground(new java.awt.Color(44, 62, 80));
-    }//GEN-LAST:event_jLabel5MouseExited
-
-    private void approve1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approve1MouseClicked
-        profile prof = new profile();
-        prof.setLocationRelativeTo(null);
-        prof.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_approve1MouseClicked
-
-    private void approve1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approve1MouseEntered
-        approve1.setBackground(new java.awt.Color(26, 188, 156));
-        approve1.setOpaque(true);
-    }//GEN-LAST:event_approve1MouseEntered
-
-    private void approve1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approve1MouseExited
-        approve1.setBackground(new java.awt.Color(44, 62, 80));
-    }//GEN-LAST:event_approve1MouseExited
-
-    private void approveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseClicked
-        Admindashboard dash = new Admindashboard();
-        dash.setLocationRelativeTo(null);
-        dash.setVisible(true);
-        dash.dispose();
-    }//GEN-LAST:event_approveMouseClicked
-
-    private void approveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseEntered
-        approve.setBackground(new java.awt.Color(26, 188, 156));
-        approve.setOpaque(true);
-    }//GEN-LAST:event_approveMouseEntered
-
-    private void approveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_approveMouseExited
-        approve.setBackground(new java.awt.Color(44, 62, 80));
-    }//GEN-LAST:event_approveMouseExited
-
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        products prod = new products();
-        prod.setLocationRelativeTo(null);
-        prod.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel6MouseClicked
-
-    private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
-        jLabel6.setBackground(new java.awt.Color(26, 188, 156));
-        jLabel6.setOpaque(true);
-    }//GEN-LAST:event_jLabel6MouseEntered
-
-    private void jLabel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseExited
-        jLabel6.setBackground(new java.awt.Color(44, 62, 80));
-    }//GEN-LAST:event_jLabel6MouseExited
-
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        accounts acc = new accounts();
-        acc.setLocationRelativeTo(null);
-        acc.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel8MouseClicked
-
-    private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
-        jLabel8.setBackground(new java.awt.Color(26, 188, 156));
-        jLabel8.setOpaque(true);
-    }//GEN-LAST:event_jLabel8MouseEntered
-
-    private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
-        jLabel8.setBackground(new java.awt.Color(44, 62, 80));
-    }//GEN-LAST:event_jLabel8MouseExited
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         addProduct add = new addProduct();
         add.setLocationRelativeTo(null);
@@ -424,31 +350,104 @@ public class products extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+
         int selectedRow = items.getSelectedRow();
 
         if (selectedRow != -1) {
             DefaultTableModel model = (DefaultTableModel) items.getModel();
+            String productId = model.getValueAt(selectedRow, 0).toString();
 
-            int id = Integer.parseInt(model.getValueAt(selectedRow, 0).toString());
-
-            String newName = model.getValueAt(selectedRow, 1).toString();
-            String newCat = model.getValueAt(selectedRow, 2).toString();
-            String newSize = model.getValueAt(selectedRow, 3).toString();
-            String newColor = model.getValueAt(selectedRow, 4).toString();
-            String newPrice = model.getValueAt(selectedRow, 5).toString();
-            String newQuan = model.getValueAt(selectedRow, 5).toString();
-
-            config conf = new config();
-            String sql = "UPDATE tbl_items SET i_name = ?, i_category = ?, i_size = ?, i_color = ?, i_price = ?, i_quantity = ? WHERE i_id = ?";
-
-            conf.updateRecord(sql, newName, newCat, newSize, newColor, newPrice, newQuan);
-
-            JOptionPane.showMessageDialog(null, "Account for " + newName + " Updated Successfully!");
-
+            updateProduct update = new updateProduct(productId);
+            update.setLocationRelativeTo(null);
+            update.setVisible(true);
+            this.dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Please select a row first!");
+            JOptionPane.showMessageDialog(null, "Please select a product from the table first!");
         }
+
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        UserSession.clearSession();
+
+        login out = new login();
+        out.setLocationRelativeTo(null);
+        out.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
+        jLabel5.setBackground(new java.awt.Color(255, 51, 51));
+        jLabel5.setOpaque(true);
+    }//GEN-LAST:event_jLabel5MouseEntered
+
+    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
+        jLabel5.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_jLabel5MouseExited
+
+    private void dashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardMouseClicked
+        Admindashboard dash = new Admindashboard();
+        dash.setLocationRelativeTo(null);
+        dash.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_dashboardMouseClicked
+
+    private void dashboardMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardMouseEntered
+        dashboard.setBackground(new java.awt.Color(26, 188, 156));
+        dashboard.setOpaque(true);
+    }//GEN-LAST:event_dashboardMouseEntered
+
+    private void dashboardMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashboardMouseExited
+        dashboard.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_dashboardMouseExited
+
+    private void prodsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prodsMouseClicked
+        products prod = new products();
+        prod.setLocationRelativeTo(null);
+        prod.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_prodsMouseClicked
+
+    private void prodsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prodsMouseEntered
+        prods.setBackground(new java.awt.Color(26, 188, 156));
+        prods.setOpaque(true);
+    }//GEN-LAST:event_prodsMouseEntered
+
+    private void prodsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prodsMouseExited
+        prods.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_prodsMouseExited
+
+    private void accsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accsMouseClicked
+        accounts acc = new accounts();
+        acc.setLocationRelativeTo(null);
+        acc.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_accsMouseClicked
+
+    private void accsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accsMouseEntered
+        accs.setBackground(new java.awt.Color(26, 188, 156));
+        accs.setOpaque(true);
+    }//GEN-LAST:event_accsMouseEntered
+
+    private void accsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accsMouseExited
+        accs.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_accsMouseExited
+
+    private void profsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profsMouseClicked
+        profile prof = new profile();
+        prof.setLocationRelativeTo(null);
+        prof.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_profsMouseClicked
+
+    private void profsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profsMouseEntered
+        profs.setBackground(new java.awt.Color(26, 188, 156));
+        profs.setOpaque(true);
+    }//GEN-LAST:event_profsMouseEntered
+
+    private void profsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profsMouseExited
+        profs.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_profsMouseExited
 
     /**
      * @param args the command line arguments
@@ -464,16 +463,24 @@ public class products extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(products.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(products.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(products.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(products.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -486,8 +493,8 @@ public class products extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel approve;
-    private javax.swing.JLabel approve1;
+    private javax.swing.JLabel accs;
+    private javax.swing.JLabel dashboard;
     private javax.swing.JLabel email;
     private javax.swing.JLabel image;
     private javax.swing.JTable items;
@@ -497,13 +504,15 @@ public class products extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel line;
+    private javax.swing.JLabel line1;
     private javax.swing.JLabel name;
+    private javax.swing.JLabel prods;
+    private javax.swing.JLabel profs;
     // End of variables declaration//GEN-END:variables
 }

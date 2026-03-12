@@ -72,23 +72,23 @@ public class login extends javax.swing.JFrame {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, 60, 40));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(78, 102, 173));
+        jLabel7.setForeground(new java.awt.Color(44, 62, 80));
         jLabel7.setText("LOGIN");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 130, 40));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 130, 40));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(78, 102, 173));
-        jLabel9.setText("Email");
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(44, 62, 80));
+        jLabel9.setText("Email:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 170, 40));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(78, 102, 173));
-        jLabel10.setText("Password");
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(44, 62, 80));
+        jLabel10.setText("Password:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 170, 40));
         jPanel1.add(jemail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 280, 40));
         jPanel1.add(jpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 280, 40));
 
-        jToggleButton1.setBackground(new java.awt.Color(78, 102, 173));
+        jToggleButton1.setBackground(new java.awt.Color(44, 62, 80));
         jToggleButton1.setForeground(new java.awt.Color(237, 241, 249));
         jToggleButton1.setText("Login");
         jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -101,10 +101,10 @@ public class login extends javax.swing.JFrame {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 70, 40));
+        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 130, 40));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(78, 102, 173));
+        jLabel12.setForeground(new java.awt.Color(44, 62, 80));
         jLabel12.setText("Don't have an account?");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 190, 40));
 
@@ -218,7 +218,13 @@ public class login extends javax.swing.JFrame {
                     manager.setVisible(true);
                     this.dispose();
                 } else if (type.equals("Supplier")) {
-                    Supplierdashboard supplier = new Supplierdashboard(name, emails);
+                    UserSession.setU_id(Integer.parseInt(user.get("u_id").toString()));
+                    UserSession.setU_name(user.get("u_name").toString());
+                    UserSession.setU_email(user.get("u_email").toString());
+                    UserSession.setU_type(user.get("u_type").toString());
+                    UserSession.setU_status(user.get("u_status").toString());
+                    UserSession.setImagePath(user.get("u_image").toString());
+                    Supplierdashboard supplier = new Supplierdashboard();
                     supplier.setVisible(true);
                     supplier.setLocationRelativeTo(null);
                     this.dispose();

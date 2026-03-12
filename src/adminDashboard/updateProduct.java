@@ -5,8 +5,10 @@
  */
 package adminDashboard;
 
+import config.UserSession;
 import config.config;
 import javax.swing.JOptionPane;
+import main.login;
 
 /**
  *
@@ -17,8 +19,52 @@ public class updateProduct extends javax.swing.JFrame {
     /**
      * Creates new form updateProduct
      */
-    public updateProduct() {
+    String productID;
+
+    public updateProduct(String id) {
+
+        if (UserSession.getU_id() == 0) {
+            JOptionPane.showMessageDialog(null, "Access Denied! Please Login First.");
+
+            login login = new login();
+            login.setVisible(true);
+            login.setLocationRelativeTo(null);
+            this.dispose();
+            return;
+        }
+
         initComponents();
+
+        this.setLocationRelativeTo(null);
+        name.setText(UserSession.getU_name());
+        email.setText(UserSession.getU_email());
+        this.productID = id;
+        displayDetails();
+    }
+
+    private updateProduct() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    // Method to pull current data from DB and put it in text fields
+    public void displayDetails() {
+        config conf = new config();
+        try {
+            String sql = "SELECT * FROM tbl_items WHERE i_id = '" + productID + "'";
+            java.util.List<java.util.Map<String, Object>> res = conf.fetchRecords(sql);
+
+            if (!res.isEmpty()) {
+                jTextField2.setText(res.get(0).get("i_name").toString());
+                jTextField3.setText(res.get(0).get("i_category").toString());
+                jTextField1.setText(res.get(0).get("i_size").toString());
+                jTextField4.setText(res.get(0).get("i_color").toString());
+                jTextField5.setText(res.get(0).get("i_price").toString());
+                jSpinner1.setValue(Integer.parseInt(res.get(0).get("i_quantity").toString()));
+                jTextField6.setText(res.get(0).get("i_company").toString());
+            }
+        } catch (Exception e) {
+            System.out.println("Error loading details: " + e.getMessage());
+        }
     }
 
     /**
@@ -49,10 +95,12 @@ public class updateProduct extends javax.swing.JFrame {
         jSpinner1 = new javax.swing.JSpinner();
         status1 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        type1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel1.setBackground(new java.awt.Color(237, 241, 249));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         name.setBackground(new java.awt.Color(237, 241, 249));
@@ -69,9 +117,9 @@ public class updateProduct extends javax.swing.JFrame {
         email.setText("EMAIL");
         jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 220, 30));
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel2.setBackground(new java.awt.Color(44, 62, 80));
 
-        jToggleButton2.setBackground(new java.awt.Color(51, 51, 51));
+        jToggleButton2.setBackground(new java.awt.Color(44, 62, 80));
         jToggleButton2.setForeground(new java.awt.Color(255, 255, 255));
         jToggleButton2.setText("DASHBOARD");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -100,48 +148,62 @@ public class updateProduct extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
 
         jLabel1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(44, 62, 80));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("UPDATE PRODUCT");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 230, 40));
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 230, 30));
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 230, 30));
         jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 230, 30));
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 230, 30));
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 230, 30));
 
-        jToggleButton1.setText("ADD PRODUCT");
+        jToggleButton1.setBackground(new java.awt.Color(44, 62, 80));
+        jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jToggleButton1.setText("UPDATE PRODUCT");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, 120, 30));
+        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 410, 140, 30));
 
-        status.setForeground(new java.awt.Color(255, 255, 255));
+        status.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        status.setForeground(new java.awt.Color(44, 62, 80));
         status.setText("QUANTiTY:");
-        jPanel1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, -1, -1));
+        jPanel1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, -1, -1));
 
-        name2.setForeground(new java.awt.Color(255, 255, 255));
+        name2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        name2.setForeground(new java.awt.Color(44, 62, 80));
         name2.setText("NAME:");
         jPanel1.add(name2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
 
-        email2.setForeground(new java.awt.Color(255, 255, 255));
+        email2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        email2.setForeground(new java.awt.Color(44, 62, 80));
         email2.setText("CATEGORY:");
         jPanel1.add(email2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
 
-        type.setForeground(new java.awt.Color(255, 255, 255));
-        type.setText("SIZE:");
-        jPanel1.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
+        type.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        type.setForeground(new java.awt.Color(44, 62, 80));
+        type.setText("COMPANY:");
+        jPanel1.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, -1, -1));
 
-        password.setForeground(new java.awt.Color(255, 255, 255));
+        password.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        password.setForeground(new java.awt.Color(44, 62, 80));
         password.setText("COLOR: ");
-        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, -1, -1));
-        jPanel1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 120, 30));
+        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, -1, -1));
+        jPanel1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 120, 30));
 
-        status1.setForeground(new java.awt.Color(255, 255, 255));
+        status1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        status1.setForeground(new java.awt.Color(44, 62, 80));
         status1.setText("PRICE:");
-        jPanel1.add(status1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, -1, -1));
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 230, 30));
+        jPanel1.add(status1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, -1, -1));
+        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 230, 30));
+        jPanel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, 230, 30));
+
+        type1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        type1.setForeground(new java.awt.Color(44, 62, 80));
+        type1.setText("SIZE:");
+        jPanel1.add(type1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,24 +238,31 @@ public class updateProduct extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         config db = new config();
+        String na = jTextField2.getText();
         String cat = jTextField3.getText();
-        String name = jTextField2.getText();
-        String size = jTextField1.getText();
-        String col = jTextField4.getText();
-        String pri = jTextField5.getText();
-        String quan = jSpinner1.getValue().toString();
+        String si = jTextField1.getText();
+        String co = jTextField4.getText();
+        String pr = jTextField5.getText();
+        String qu = jSpinner1.getValue().toString();
+        String comp = jTextField6.getText();
 
-        if (name.isEmpty() || size.isEmpty() || col.isEmpty() || pri.isEmpty() || quan.isEmpty() || cat.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "All fields are required to fill in!");
+        if (na.isEmpty() && cat.isEmpty() && si.isEmpty() && co.isEmpty() && pr.isEmpty() && comp.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please fill in at least 1 field!");
             return;
         }
 
-        String sql = "INSERT INTO tbl_items (i_name, i_category, i_size, i_color, i_price, i_quantity) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "UPDATE tbl_items SET i_name = ?, i_category = ?, i_size = ?, i_color = ?, i_price = ?, i_quantity = ?, i_company = ? WHERE i_id = ?";
 
-        db.addRecord(sql, name, cat, size, col, pri, quan);
+        db.updateRecord(sql, na, cat, si, co, pr, qu, comp, productID);
 
-        JOptionPane.showMessageDialog(null, "Item Successfully Added!");
+        JOptionPane.showMessageDialog(null, "Item Successfully Updated!");
 
+        Admindashboard back = new Admindashboard();
+        back.setLocationRelativeTo(null);
+        back.setVisible(true);
+        back.loadAdminStats();
+
+        this.dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
@@ -210,16 +279,24 @@ public class updateProduct extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(updateProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateProduct.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(updateProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateProduct.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(updateProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateProduct.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(updateProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateProduct.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -243,6 +320,7 @@ public class updateProduct extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JLabel name;
@@ -251,5 +329,6 @@ public class updateProduct extends javax.swing.JFrame {
     private javax.swing.JLabel status;
     private javax.swing.JLabel status1;
     private javax.swing.JLabel type;
+    private javax.swing.JLabel type1;
     // End of variables declaration//GEN-END:variables
 }

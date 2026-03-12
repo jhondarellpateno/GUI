@@ -34,12 +34,10 @@ public class updateUser extends javax.swing.JFrame {
         }
         initComponents();
         this.setLocationRelativeTo(null);
+        name.setText(UserSession.getU_name());
+        email.setText(UserSession.getU_email());
         this.transferID = id;
         displayData();
-    }
-
-    private updateUser() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void displayData() {
@@ -52,7 +50,8 @@ public class updateUser extends javax.swing.JFrame {
             java.util.Map<String, Object> row = data.get(0);
 
             jTextField2.setText(row.get("u_name").toString());
-            jTextField3.setText(row.get("u_email").toString());
+            jTextField1.setText(row.get("u_company").toString());
+            jTextField3.setText(row.get("u_type").toString());
 
         }
     }
@@ -69,19 +68,23 @@ public class updateUser extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jToggleButton2 = new javax.swing.JToggleButton();
+        name = new javax.swing.JLabel();
+        email = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
         name2 = new javax.swing.JLabel();
         email2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        name3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel1.setBackground(new java.awt.Color(237, 241, 249));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel2.setBackground(new java.awt.Color(44, 62, 80));
 
         jToggleButton2.setBackground(new java.awt.Color(51, 51, 51));
         jToggleButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -92,12 +95,30 @@ public class updateUser extends javax.swing.JFrame {
             }
         });
 
+        name.setBackground(new java.awt.Color(237, 241, 249));
+        name.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        name.setForeground(new java.awt.Color(237, 241, 249));
+        name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        name.setText("USER");
+
+        email.setBackground(new java.awt.Color(237, 241, 249));
+        email.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
+        email.setForeground(new java.awt.Color(237, 241, 249));
+        email.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        email.setText("EMAIL");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(682, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 312, Short.MAX_VALUE)
                 .addComponent(jToggleButton2)
                 .addGap(23, 23, 23))
         );
@@ -105,20 +126,25 @@ public class updateUser extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jToggleButton2)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
 
         jLabel1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(44, 62, 80));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("UPDATE USER");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 70, 230, 40));
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 230, 30));
         jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 230, 30));
 
+        jToggleButton1.setBackground(new java.awt.Color(44, 62, 80));
+        jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
         jToggleButton1.setText("UPDATE");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,13 +153,21 @@ public class updateUser extends javax.swing.JFrame {
         });
         jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, 120, 30));
 
-        name2.setForeground(new java.awt.Color(255, 255, 255));
-        name2.setText("NAME:");
-        jPanel1.add(name2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
+        name2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        name2.setForeground(new java.awt.Color(44, 62, 80));
+        name2.setText("COMPANY:");
+        jPanel1.add(name2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
 
-        email2.setForeground(new java.awt.Color(255, 255, 255));
-        email2.setText("EMAIL:");
-        jPanel1.add(email2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, -1, -1));
+        email2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        email2.setForeground(new java.awt.Color(44, 62, 80));
+        email2.setText("TYPE:");
+        jPanel1.add(email2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 230, 30));
+
+        name3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        name3.setForeground(new java.awt.Color(44, 62, 80));
+        name3.setText("NAME:");
+        jPanel1.add(name3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,39 +197,26 @@ public class updateUser extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         config db = new config();
         String na = jTextField2.getText();
-        String em = jTextField3.getText();
+        String com = jTextField1.getText(); 
+        String type = jTextField3.getText();
 
-        if (na.isEmpty() || em.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "All fields are required to fill in!");
+        if (na.isEmpty() && com.isEmpty() && type.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please fill in at least 1 field!");
             return;
         }
 
-        String emailPattern = "^[A-Za-z0-9+_.-]+@(gmail\\.com|yahoo\\.com|outlook\\.com)$";
+        String sql = "UPDATE tbl_user SET u_name = ?, u_type = ?, u_company = ? WHERE u_id = ?";
+        db.updateRecord(sql, na, type, com, transferID);
 
-        if (!em.matches(emailPattern)) {
-            JOptionPane.showMessageDialog(null, "Invalid Email!");
-            jTextField2.setText("");
-            jTextField3.setText("");
+        JOptionPane.showMessageDialog(null, "Account Successfully Updated!");
 
-            return;
+        Admindashboard back = new Admindashboard();
+        back.setLocationRelativeTo(null);
+        back.setVisible(true);
+        back.loadAdminStats();
 
-        }
+        this.dispose();
 
-        String qry = "SELECT * FROM tbl_user WHERE u_email = ?";
-        java.util.List<java.util.Map<String, Object>> result = db.fetchRecords(qry, em);
-
-        if (!result.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Email already exists. Please enter another email.");
-        } else {
-            String sql = "INSERT INTO tbl_user (u_name, u_email, u_pass, u_status, u_type) VALUES (?, ?, ?, ?, ?)";
-
-            db.addRecord(sql, na, em);
-
-            JOptionPane.showMessageDialog(null, "Account Successfully Created!");
-
-            jTextField2.setText("");
-            jTextField3.setText("");
-        }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
@@ -219,36 +240,48 @@ public class updateUser extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(updateUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateUser.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(updateUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateUser.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(updateUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateUser.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(updateUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(updateUser.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new updateUser().setVisible(true);
+                new updateUser("").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel email;
     private javax.swing.JLabel email2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JLabel name;
     private javax.swing.JLabel name2;
+    private javax.swing.JLabel name3;
     // End of variables declaration//GEN-END:variables
 }

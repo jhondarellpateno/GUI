@@ -62,11 +62,14 @@ public class addUser extends javax.swing.JFrame {
         email2 = new javax.swing.JLabel();
         type = new javax.swing.JLabel();
         password = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        password1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(44, 62, 80));
+        jPanel1.setBackground(new java.awt.Color(237, 241, 249));
+        jPanel1.setForeground(new java.awt.Color(237, 241, 249));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         name.setBackground(new java.awt.Color(237, 241, 249));
@@ -83,7 +86,7 @@ public class addUser extends javax.swing.JFrame {
         email.setText("EMAIL");
         jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 220, 30));
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel2.setBackground(new java.awt.Color(44, 62, 80));
 
         jToggleButton2.setBackground(new java.awt.Color(51, 51, 51));
         jToggleButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,22 +117,24 @@ public class addUser extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 50));
 
         jLabel1.setFont(new java.awt.Font("Showcard Gothic", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(44, 62, 80));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ADD USER");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 70, 230, 40));
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 230, 30));
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 230, 30));
         jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 230, 30));
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 230, 30));
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 230, 30));
 
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 230, 30));
+        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 230, 30));
 
+        jToggleButton1.setBackground(new java.awt.Color(44, 62, 80));
+        jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
         jToggleButton1.setText("ADD USER");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,25 +143,36 @@ public class addUser extends javax.swing.JFrame {
         });
         jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, 120, 30));
 
-        status.setForeground(new java.awt.Color(255, 255, 255));
+        status.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        status.setForeground(new java.awt.Color(44, 62, 80));
         status.setText("STATUS:");
-        jPanel1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, -1, -1));
+        jPanel1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 300, -1, -1));
 
-        name2.setForeground(new java.awt.Color(255, 255, 255));
+        name2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        name2.setForeground(new java.awt.Color(44, 62, 80));
         name2.setText("NAME:");
         jPanel1.add(name2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
 
-        email2.setForeground(new java.awt.Color(255, 255, 255));
+        email2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        email2.setForeground(new java.awt.Color(44, 62, 80));
         email2.setText("EMAIL:");
         jPanel1.add(email2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, -1));
 
-        type.setForeground(new java.awt.Color(255, 255, 255));
+        type.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        type.setForeground(new java.awt.Color(44, 62, 80));
         type.setText("TYPE:");
         jPanel1.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
 
-        password.setForeground(new java.awt.Color(255, 255, 255));
-        password.setText("PASSWORD: ");
-        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, -1));
+        password.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        password.setForeground(new java.awt.Color(44, 62, 80));
+        password.setText("COMPANY:");
+        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, -1, -1));
+        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 230, 30));
+
+        password1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        password1.setForeground(new java.awt.Color(44, 62, 80));
+        password1.setText("PASSWORD: ");
+        jPanel1.add(password1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 510));
 
@@ -172,33 +188,27 @@ public class addUser extends javax.swing.JFrame {
         config db = new config();
         String na = jTextField2.getText();
         String em = jTextField3.getText();
-        String ty = jTextField1.getText();
+        String ty = jTextField1.getText(); 
         String pass = jPasswordField1.getText();
         String stat = jTextField4.getText();
+        String com = jTextField5.getText(); 
 
-        if (na.isEmpty() || em.isEmpty() || ty.isEmpty() || pass.isEmpty() || stat.isEmpty()) {
+        if (na.isEmpty() || em.isEmpty() || ty.isEmpty() || pass.isEmpty() || stat.isEmpty() || com.isEmpty()) {
             JOptionPane.showMessageDialog(null, "All fields are required to fill in!");
             return;
         }
 
         String emailPattern = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[a-z]+$";
-
         if (!em.matches(emailPattern)) {
             JOptionPane.showMessageDialog(null, "Invalid Email!");
-            jTextField2.setText("");
-            jTextField3.setText("");
-            jTextField1.setText("");
-            jPasswordField1.setText("");
-            jTextField4.setText("");
             return;
-
         }
 
         String qry = "SELECT * FROM tbl_user WHERE u_email = ?";
         java.util.List<java.util.Map<String, Object>> result = db.fetchRecords(qry, em);
 
         if (!result.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Email already exists. Please enter another email.");
+            JOptionPane.showMessageDialog(null, "Email already exists!");
         } else {
             String hash = db.hashPassword(pass);
             String sql = "INSERT INTO tbl_user (u_name, u_email, u_pass, u_status, u_type) VALUES (?, ?, ?, ?, ?)";
@@ -207,11 +217,13 @@ public class addUser extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Account Successfully Created!");
 
-            jTextField2.setText("");
-            jTextField3.setText("");
-            jTextField1.setText("");
-            jPasswordField1.setText("");
-            jTextField4.setText("");
+            Admindashboard back = new Admindashboard();
+            back.setLocationRelativeTo(null);
+            back.setVisible(true);
+
+            back.loadAdminStats();
+
+            this.dispose(); 
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
@@ -268,11 +280,13 @@ public class addUser extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JLabel name;
     private javax.swing.JLabel name2;
     private javax.swing.JLabel password;
+    private javax.swing.JLabel password1;
     private javax.swing.JLabel status;
     private javax.swing.JLabel type;
     // End of variables declaration//GEN-END:variables

@@ -33,7 +33,7 @@ public class accounts extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         name1.setText(UserSession.getU_name());
         email1.setText(UserSession.getU_email());
-        config con = new config ();
+        config con = new config();
         con.setProfileIcon(image, UserSession.getImagePath());
         displayU();
     }
@@ -358,17 +358,24 @@ public class accounts extends javax.swing.JFrame {
             return;
         }
 
-        DefaultTableModel model = (DefaultTableModel) tableAccounts.getModel();
+        int confirm = JOptionPane.showConfirmDialog(null,
+                "Are you sure you want to delete this user? This action cannot be undone.", "Confirm Deletion", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 
-        String id = model.getValueAt(selectedRow, 0).toString();
+        if (confirm == JOptionPane.YES_OPTION) {
+            DefaultTableModel model = (DefaultTableModel) tableAccounts.getModel();
+            String id = model.getValueAt(selectedRow, 0).toString();
 
-        config conf = new config();
-        String sql = "DELETE FROM tbl_user WHERE u_id = ?";
-        conf.deleteRecord(sql, id);
+            config conf = new config();
+            String sql = "DELETE FROM tbl_user WHERE u_id = ?";
 
-        model.removeRow(selectedRow);
+            conf.deleteRecord(sql, id);
 
-        JOptionPane.showMessageDialog(null, "Deleted Successfully!");
+            model.removeRow(selectedRow);
+
+            JOptionPane.showMessageDialog(null, "Deleted Successfully!");
+        } else {
+            System.out.println("Deletion cancelled by user.");
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void ApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApproveActionPerformed
@@ -379,18 +386,21 @@ public class accounts extends javax.swing.JFrame {
             return;
         }
 
-        DefaultTableModel model = (DefaultTableModel) tableAccounts.getModel();
+        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to approve this account?", "Confirm Approval", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-        String id = model.getValueAt(selectedRow, 0).toString();
+        if (confirm == JOptionPane.YES_OPTION) {
+            DefaultTableModel model = (DefaultTableModel) tableAccounts.getModel();
+            String id = model.getValueAt(selectedRow, 0).toString();
 
-        config conf = new config();
+            config conf = new config();
 
-        String sql = "UPDATE tbl_user SET u_status = ? WHERE u_id = ?";
-        conf.updateRecord(sql, "APPROVED", id);
+            String sql = "UPDATE tbl_user SET u_status = ? WHERE u_id = ?";
+            conf.updateRecord(sql, "APPROVED", id);
 
-        model.setValueAt("APPROVED", selectedRow, 3);
+            model.setValueAt("APPROVED", selectedRow, 3);
 
-        JOptionPane.showMessageDialog(null, "Account Approved!");
+            JOptionPane.showMessageDialog(null, "Account Approved!");
+        }
     }//GEN-LAST:event_ApproveActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -507,45 +517,7 @@ public class accounts extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
 
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(accounts.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(accounts.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(accounts.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(accounts.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new accounts().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Approve;

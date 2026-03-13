@@ -22,7 +22,6 @@ public class Admindashboard extends javax.swing.JFrame {
 
         if (UserSession.getU_id() == 0) {
             JOptionPane.showMessageDialog(null, "Access Denied! Please Login First.");
-
             login login = new login();
             login.setVisible(true);
             login.setLocationRelativeTo(null);
@@ -32,12 +31,19 @@ public class Admindashboard extends javax.swing.JFrame {
 
         initComponents();
         this.setLocationRelativeTo(null);
+
+
         name.setText(UserSession.getU_name());
         email.setText(UserSession.getU_email());
-        config con = new config();
-        con.setProfileIcon(image, UserSession.getImagePath());
-        loadAdminStats();
 
+        config con = new config();
+        String currentImagePath = UserSession.getImagePath();
+
+        if (currentImagePath != null && !currentImagePath.isEmpty()) {
+            con.setProfileIcon(image, currentImagePath);
+        }
+
+        loadAdminStats();
     }
 
     public void loadAdminStats() {
@@ -185,7 +191,7 @@ public class Admindashboard extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(44, 62, 80));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("TOTAL SALES");
+        jLabel9.setText("TOTAL COST");
         jPanel7.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 148, 26));
 
         jPanel11.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 230, 130));
@@ -420,38 +426,6 @@ public class Admindashboard extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Admindashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Admindashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Admindashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Admindashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Admindashboard().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel accs;

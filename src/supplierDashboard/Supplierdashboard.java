@@ -22,7 +22,6 @@ public class Supplierdashboard extends javax.swing.JFrame {
     public Supplierdashboard() {
         if (UserSession.getU_id() == 0) {
             JOptionPane.showMessageDialog(null, "Access Denied! Please Login First.");
-
             login login = new login();
             login.setVisible(true);
             login.setLocationRelativeTo(null);
@@ -32,34 +31,37 @@ public class Supplierdashboard extends javax.swing.JFrame {
 
         initComponents();
         this.setLocationRelativeTo(null);
+
+
         name.setText(UserSession.getU_name());
         email.setText(UserSession.getU_email());
+
         config con = new config();
-        con.setProfileIcon(image, UserSession.getImagePath());
+        String currentImagePath = UserSession.getImagePath();
+
+        if (currentImagePath != null && !currentImagePath.isEmpty()) {
+            con.setProfileIcon(image, currentImagePath);
+        }
+
         loadSupplierStats();
     }
 
     public void loadSupplierStats() {
         config conf = new config();
         try {
-            // Get the ID of the Supplier currently logged in
-            int loggedInSupplier = UserSession.getInstance().getU_id();
 
-            // 1. NO. OF ORDERS (Specific to this Supplier)
+            int loggedInSupplier = UserSession.getInstance().getU_id();
             String countSql = "SELECT COUNT(*) AS total FROM tbl_order WHERE u_id = '" + loggedInSupplier + "'";
             java.util.List<java.util.Map<String, Object>> countRes = conf.fetchRecords(countSql);
             if (!countRes.isEmpty()) {
                 jLabel7.setText(countRes.get(0).get("total").toString());
             }
 
-            // 2. TOTAL SALES (Specific to this Supplier)
             String salesSql = "SELECT SUM(o_amountpay) AS total FROM tbl_order WHERE u_id = '" + loggedInSupplier + "'";
             java.util.List<java.util.Map<String, Object>> salesRes = conf.fetchRecords(salesSql);
             Object totalSales = salesRes.get(0).get("total");
             jLabel9.setText("₱" + (totalSales != null ? String.format("%,.2f", Double.parseDouble(totalSales.toString())) : "0.00"));
 
-            // 3. ASSIGNED ORDERS Table
-            // This shows the list of items specifically sent to this company
             String tableSql = "SELECT o_id, o_name, o_quantity, o_status, o_deliverydate "
                     + "FROM tbl_order "
                     + "WHERE u_id = '" + loggedInSupplier + "' "
@@ -396,37 +398,6 @@ public class Supplierdashboard extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Supplierdashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Supplierdashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Supplierdashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Supplierdashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Supplierdashboard().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel email;

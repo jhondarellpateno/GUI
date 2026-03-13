@@ -391,6 +391,14 @@ public class addOrder extends javax.swing.JFrame {
             return;
         }
 
+        Object supplierID = jTextField2.getClientProperty("supplier_id");
+        String supplierName = jTextField2.getText();
+
+        if (supplierName == null || supplierName.trim().isEmpty() || supplierName.equalsIgnoreCase("No Supplier Available") || supplierID == null) {
+            JOptionPane.showMessageDialog(null, "Cannot process order: No Supplier Available for this item!", "Supplier Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         int requestedQty = Integer.parseInt(jSpinner1.getValue().toString());
         int availableStock = Integer.parseInt(model.getValueAt(selectedRow, 6).toString());
 
@@ -417,9 +425,6 @@ public class addOrder extends javax.swing.JFrame {
         double unitPrice = Double.parseDouble(txtPrice.getText());
 
         double totalAmount = unitPrice * requestedQty;
-
-        Object supplierID = jTextField2.getClientProperty("supplier_id");
-        String supplierName = jTextField2.getText();
 
         config conf = new config();
 
@@ -637,45 +642,7 @@ public class addOrder extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(managerProfile.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(managerProfile.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(managerProfile.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(managerProfile.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new addOrder().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel add;

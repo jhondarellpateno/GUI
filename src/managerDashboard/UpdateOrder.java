@@ -490,7 +490,7 @@ public class UpdateOrder extends javax.swing.JFrame {
         if (confirm == JOptionPane.YES_OPTION) {
             config conf = new config();
 
-            String sql = "UPDATE tbl_order SET i_id = ?, o_name = ?, o_category = ?, o_size = ?, o_color = ?, o_price = ?, o_quantity = ? WHERE o_id = ?";
+            String sql = "UPDATE tbl_order SET i_id = ?, o_name = ?, o_category = ?, o_size = ?, o_color = ?, o_amountpay = ?, o_quantity = ? WHERE o_id = ?";
             conf.updateRecord(sql, pid, name, cat, si, col, pri, requestedQty, oid);
 
             String stockSql = "UPDATE tbl_items SET i_quantity = i_quantity + ? WHERE i_id = ?";
@@ -624,45 +624,7 @@ public class UpdateOrder extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UpdateOrder.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UpdateOrder.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UpdateOrder.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UpdateOrder.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UpdateOrder().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel add;

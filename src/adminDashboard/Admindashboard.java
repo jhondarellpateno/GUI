@@ -7,10 +7,8 @@ package adminDashboard;
 
 import config.UserSession;
 import config.config;
-import java.awt.Color;
 import javax.swing.JOptionPane;
 import main.login;
-import main.landingPage;
 
 /**
  *
@@ -31,7 +29,6 @@ public class Admindashboard extends javax.swing.JFrame {
 
         initComponents();
         this.setLocationRelativeTo(null);
-
 
         name.setText(UserSession.getU_name());
         email.setText(UserSession.getU_email());
@@ -82,7 +79,7 @@ public class Admindashboard extends javax.swing.JFrame {
         jPanel11 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        ordersPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -105,6 +102,7 @@ public class Admindashboard extends javax.swing.JFrame {
         line = new javax.swing.JLabel();
         line1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -128,8 +126,8 @@ public class Admindashboard extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
         jPanel11.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 170, -1));
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.darkGray, java.awt.Color.darkGray));
+        ordersPanel.setBackground(new java.awt.Color(255, 255, 255));
+        ordersPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.darkGray, java.awt.Color.darkGray));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(44, 62, 80));
@@ -148,29 +146,29 @@ public class Admindashboard extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout ordersPanelLayout = new javax.swing.GroupLayout(ordersPanel);
+        ordersPanel.setLayout(ordersPanelLayout);
+        ordersPanelLayout.setHorizontalGroup(
+            ordersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ordersPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ordersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGroup(ordersPanelLayout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        ordersPanelLayout.setVerticalGroup(
+            ordersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ordersPanelLayout.createSequentialGroup()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel11.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 500, 200));
+        jPanel11.add(ordersPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 500, 200));
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.darkGray, java.awt.Color.darkGray));
@@ -258,7 +256,7 @@ public class Admindashboard extends javax.swing.JFrame {
                 profsMouseExited(evt);
             }
         });
-        jPanel3.add(profs, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 160, 30));
+        jPanel3.add(profs, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 160, 30));
 
         dashboard.setBackground(new java.awt.Color(237, 241, 249));
         dashboard.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -275,7 +273,7 @@ public class Admindashboard extends javax.swing.JFrame {
                 dashboardMouseExited(evt);
             }
         });
-        jPanel3.add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 160, 30));
+        jPanel3.add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 160, 30));
 
         prods.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         prods.setForeground(new java.awt.Color(237, 241, 249));
@@ -291,7 +289,7 @@ public class Admindashboard extends javax.swing.JFrame {
                 prodsMouseExited(evt);
             }
         });
-        jPanel3.add(prods, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 160, 30));
+        jPanel3.add(prods, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 160, 30));
 
         accs.setBackground(new java.awt.Color(237, 241, 249));
         accs.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -308,7 +306,7 @@ public class Admindashboard extends javax.swing.JFrame {
                 accsMouseExited(evt);
             }
         });
-        jPanel3.add(accs, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 160, 30));
+        jPanel3.add(accs, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 160, 30));
 
         line.setForeground(new java.awt.Color(255, 255, 255));
         line.setText("____________________________________");
@@ -335,6 +333,22 @@ public class Admindashboard extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 200, 40));
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(237, 241, 249));
+        jLabel1.setText("Logs");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel1MouseExited(evt);
+            }
+        });
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 160, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 500));
 
@@ -406,6 +420,16 @@ public class Admindashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_accsMouseExited
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        config conf = new config();
+        try {
+
+            String sql = "UPDATE tbl_user_sessions SET logout_time = datetime('now', 'localtime'), " + "s_status = 'Logged Out' " + "WHERE u_id = ? AND s_status = 'Online'";
+
+            conf.updateRecord(sql, UserSession.getU_id());
+        } catch (Exception e) {
+            System.out.println("Logout Database Error: " + e.getMessage());
+        }
+
         UserSession.clearSession();
 
         login out = new login();
@@ -423,6 +447,22 @@ public class Admindashboard extends javax.swing.JFrame {
         jLabel5.setBackground(new java.awt.Color(44, 62, 80));
     }//GEN-LAST:event_jLabel5MouseExited
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        logs log = new logs();
+        log.setLocationRelativeTo(null);
+        log.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+        jLabel1.setBackground(new java.awt.Color(26, 188, 156));
+        jLabel1.setOpaque(true);
+    }//GEN-LAST:event_jLabel1MouseEntered
+
+    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
+        jLabel1.setBackground(new java.awt.Color(44, 62, 80));
+    }//GEN-LAST:event_jLabel1MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -432,6 +472,7 @@ public class Admindashboard extends javax.swing.JFrame {
     private javax.swing.JLabel dashboard;
     private javax.swing.JLabel email;
     private javax.swing.JLabel image;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -444,7 +485,6 @@ public class Admindashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
@@ -453,6 +493,7 @@ public class Admindashboard extends javax.swing.JFrame {
     private javax.swing.JLabel line;
     private javax.swing.JLabel line1;
     private javax.swing.JLabel name;
+    private javax.swing.JPanel ordersPanel;
     private javax.swing.JLabel prods;
     private javax.swing.JLabel profs;
     // End of variables declaration//GEN-END:variables

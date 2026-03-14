@@ -360,7 +360,17 @@ public class Managerdashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_updateMouseExited
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        UserSession.getInstance().clearSession();
+        config conf = new config();
+        try {
+
+            String sql = "UPDATE tbl_user_sessions SET logout_time = datetime('now', 'localtime'), " + "s_status = 'Logged Out' " + "WHERE u_id = ? AND s_status = 'Online'";
+
+            conf.updateRecord(sql, UserSession.getU_id());
+        } catch (Exception e) {
+            System.out.println("Logout Database Error: " + e.getMessage());
+        }
+
+        UserSession.clearSession();
 
         login out = new login();
         out.setLocationRelativeTo(null);

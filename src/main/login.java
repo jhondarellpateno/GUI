@@ -189,50 +189,43 @@ public class login extends javax.swing.JFrame {
             String name = user.get("u_name").toString();
             String stat = user.get("u_status").toString();
             String type = user.get("u_type").toString();
-            String emails = user.get("u_email").toString();
+            int userId = Integer.parseInt(user.get("u_id").toString()); 
 
             if (stat.equals("PENDING")) {
                 JOptionPane.showMessageDialog(null, "Account is pending. Please contact admin for approval.");
             } else {
+                UserSession.setU_id(userId);
+                UserSession.setU_name(name);
+                UserSession.setU_email(user.get("u_email").toString());
+                UserSession.setU_type(type);
+                UserSession.setU_status(stat);
+                UserSession.setImagePath(user.get("u_image") != null ? user.get("u_image").toString() : "");
+
+                try {
+                    String logSql = "INSERT INTO tbl_user_sessions (u_id, s_status) VALUES (?, 'Online')";
+                    config.addRecord(logSql, userId); 
+                } catch (Exception e) {
+                    System.out.println("Session Log Error: " + e.getMessage());
+                }
+
                 JOptionPane.showMessageDialog(null, "Hello " + name + "!\nLOGIN SUCCESS!");
 
                 if (type.equals("Admin")) {
-                    UserSession.setU_id(Integer.parseInt(user.get("u_id").toString()));
-                    UserSession.setU_name(user.get("u_name").toString());
-                    UserSession.setU_email(user.get("u_email").toString());
-                    UserSession.setU_type(user.get("u_type").toString());
-                    UserSession.setU_status(user.get("u_status").toString());
-                    UserSession.setImagePath(user.get("u_image").toString());
-                    new Admindashboard().setVisible(true);
-                    this.dispose();
-
+                    Admindashboard admin = new Admindashboard();
+                    admin.setVisible(true);
+                    admin.setLocationRelativeTo(null);
                 } else if (type.equals("Manager")) {
-                    UserSession.setU_id(Integer.parseInt(user.get("u_id").toString()));
-                    UserSession.setU_name(user.get("u_name").toString());
-                    UserSession.setU_email(user.get("u_email").toString());
-                    UserSession.setU_type(user.get("u_type").toString());
-                    UserSession.setU_status(user.get("u_status").toString());
-                    UserSession.setImagePath(user.get("u_image").toString());
                     Managerdashboard manager = new Managerdashboard();
                     manager.setLocationRelativeTo(null);
                     manager.setVisible(true);
-                    this.dispose();
                 } else if (type.equals("Supplier")) {
-                    UserSession.setU_id(Integer.parseInt(user.get("u_id").toString()));
-                    UserSession.setU_name(user.get("u_name").toString());
-                    UserSession.setU_email(user.get("u_email").toString());
-                    UserSession.setU_type(user.get("u_type").toString());
-                    UserSession.setU_status(user.get("u_status").toString());
-                    UserSession.setImagePath(user.get("u_image").toString());
                     Supplierdashboard supplier = new Supplierdashboard();
-                    supplier.setVisible(true);
                     supplier.setLocationRelativeTo(null);
-                    this.dispose();
+                    supplier.setVisible(true);
                 }
 
-                
+                this.dispose();
             }
-
             jemail1.setText("");
             jpass.setText("");
         }
@@ -248,7 +241,6 @@ public class login extends javax.swing.JFrame {
     private void jToggleButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseEntered
 
     }//GEN-LAST:event_jToggleButton1MouseEntered
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

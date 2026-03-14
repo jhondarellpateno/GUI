@@ -12,7 +12,7 @@ public class UserSession {
     private UserSession() {
     }
 
-    // THIS IS THE MISSING METHOD
+ 
     public static UserSession getInstance() {
         if (instance == null) {
             instance = new UserSession();

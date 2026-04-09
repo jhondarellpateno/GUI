@@ -204,21 +204,37 @@ public class config {
         // This converts the binary data into a standard Base64 string
         return Base64.getEncoder().encodeToString(imageBytes);
     }
-    
-    public void setProfileIcon(JLabel label, String path) {
-    if (path == null || path.isEmpty()) {
-        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png")));
-        return;
-    }
-    
-    try {
-        ImageIcon icon = new ImageIcon(path);
-        // Resizing the image to fit the label dimensions
-        Image img = icon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
-        label.setIcon(new ImageIcon(img));
-    } catch (Exception e) {
-        System.out.println("Error setting icon: " + e.getMessage());
-    }
-}
 
+    public void setProfileIcon(JLabel label, String path) {
+        if (path == null || path.isEmpty()) {
+            label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/profile.png")));
+            return;
+        }
+
+        try {
+            ImageIcon icon = new ImageIcon(path);
+            // Resizing the image to fit the label dimensions
+            Image img = icon.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
+            label.setIcon(new ImageIcon(img));
+        } catch (Exception e) {
+            System.out.println("Error setting icon: " + e.getMessage());
+        }
+    }
+
+    public int getSingleValue(String sql, Object... values) {
+        int count = 0;
+        try (Connection conn = this.connectDB(); // Use your existing connection method name here
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            for (int i = 0; i < values.length; i++) {
+                pstmt.setObject(i + 1, values[i]);
+            }
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Query Error: " + e.getMessage());
+        }
+        return count;
+    }
 }

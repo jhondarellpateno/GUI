@@ -50,7 +50,6 @@ public class updateUser extends javax.swing.JFrame {
             java.util.Map<String, Object> row = data.get(0);
 
             jTextField2.setText(row.get("u_name").toString());
-            jTextField1.setText(row.get("u_company").toString());
             jTextField3.setText(row.get("u_type").toString());
 
         }
@@ -76,8 +75,8 @@ public class updateUser extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         name2 = new javax.swing.JLabel();
         email2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         name3 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -162,12 +161,14 @@ public class updateUser extends javax.swing.JFrame {
         email2.setForeground(new java.awt.Color(44, 62, 80));
         email2.setText("TYPE:");
         jPanel1.add(email2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 230, 30));
 
         name3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         name3.setForeground(new java.awt.Color(44, 62, 80));
         name3.setText("NAME:");
         jPanel1.add(name3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internal", "The Jean Syndicate", "Global Suiting Logistics", "Standard Cotton Corp." }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 230, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -197,7 +198,7 @@ public class updateUser extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         config db = new config();
         String na = jTextField2.getText();
-        String com = jTextField1.getText(); 
+        String com = jComboBox1.getSelectedItem().toString();
         String type = jTextField3.getText();
 
         if (na.isEmpty() && com.isEmpty() && type.isEmpty()) {
@@ -234,10 +235,10 @@ public class updateUser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel email;
     private javax.swing.JLabel email2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JToggleButton jToggleButton1;

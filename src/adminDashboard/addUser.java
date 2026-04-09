@@ -62,8 +62,8 @@ public class addUser extends javax.swing.JFrame {
         email2 = new javax.swing.JLabel();
         type = new javax.swing.JLabel();
         password = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
         password1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -167,12 +167,14 @@ public class addUser extends javax.swing.JFrame {
         password.setForeground(new java.awt.Color(44, 62, 80));
         password.setText("COMPANY:");
         jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, -1, -1));
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 230, 30));
 
         password1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         password1.setForeground(new java.awt.Color(44, 62, 80));
         password1.setText("PASSWORD: ");
         jPanel1.add(password1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internal", "The Jean Syndicate", "Global Suiting Logistics", "Standard Cotton Corp." }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 230, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 510));
 
@@ -191,7 +193,7 @@ public class addUser extends javax.swing.JFrame {
         String ty = jTextField1.getText(); 
         String pass = jPasswordField1.getText();
         String stat = jTextField4.getText();
-        String com = jTextField5.getText(); 
+        String com = jComboBox1.getSelectedItem().toString();
 
         if (na.isEmpty() || em.isEmpty() || ty.isEmpty() || pass.isEmpty() || stat.isEmpty() || com.isEmpty()) {
             JOptionPane.showMessageDialog(null, "All fields are required to fill in!");
@@ -211,9 +213,9 @@ public class addUser extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Email already exists!");
         } else {
             String hash = db.hashPassword(pass);
-            String sql = "INSERT INTO tbl_user (u_name, u_email, u_pass, u_status, u_type) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO tbl_user (u_name, u_email, u_pass, u_company, u_status, u_type, u_image) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-            db.addRecord(sql, na, em, hash, stat, ty);
+            db.addRecord(sql, na, em, hash, com, stat, ty, "src/images/profile.png");
 
             JOptionPane.showMessageDialog(null, "Account Successfully Created!");
 
@@ -242,6 +244,7 @@ public class addUser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel email;
     private javax.swing.JLabel email2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -250,7 +253,6 @@ public class addUser extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JLabel name;

@@ -43,6 +43,11 @@ public class addOrder extends javax.swing.JFrame {
         txtPrice.setEditable(false);
         jTextField2.setEditable(false);
 
+        DefaultTableModel cartModel = new DefaultTableModel(
+                new String[]{"Item ID", "Supplier ID", "Supplier Name", "Product Name", "Category", "Size", "Color", "Total Price", "Quantity"}, 0
+        );
+        cart.setModel(cartModel);
+
         displayItems();
     }
 
@@ -80,6 +85,7 @@ public class addOrder extends javax.swing.JFrame {
         profile = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         line1 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel11 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -105,6 +111,12 @@ public class addOrder extends javax.swing.JFrame {
         jToggleButton3 = new javax.swing.JToggleButton();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        cart = new javax.swing.JTable();
+        jToggleButton4 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -250,13 +262,13 @@ public class addOrder extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(44, 62, 80));
         jLabel2.setText("ADD SUPPLY ORDER");
-        jPanel11.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 230, 50));
+        jPanel11.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 230, 50));
 
         jLabel4.setBackground(new java.awt.Color(237, 241, 249));
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(237, 241, 249));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
-        jPanel11.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 170, -1));
+        jPanel11.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 170, -1));
 
         items.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -274,7 +286,7 @@ public class addOrder extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(items);
 
-        jPanel11.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 520, 120));
+        jPanel11.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 520, 120));
 
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -284,7 +296,7 @@ public class addOrder extends javax.swing.JFrame {
                 jTextField1KeyTyped(evt);
             }
         });
-        jPanel11.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 190, 30));
+        jPanel11.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 190, 30));
 
         jToggleButton1.setBackground(new java.awt.Color(44, 62, 80));
         jToggleButton1.setForeground(new java.awt.Color(248, 249, 250));
@@ -294,51 +306,51 @@ public class addOrder extends javax.swing.JFrame {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        jPanel11.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, -1, 30));
-        jPanel11.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 160, 30));
-        jPanel11.add(txtColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, 160, 30));
-        jPanel11.add(txtCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 160, 30));
-        jPanel11.add(txtSize, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, 160, 30));
+        jPanel11.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, -1, 30));
+        jPanel11.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 160, 30));
+        jPanel11.add(txtColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 240, 160, 30));
+        jPanel11.add(txtCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 160, 30));
+        jPanel11.add(txtSize, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 160, 30));
 
         txtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameActionPerformed(evt);
             }
         });
-        jPanel11.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 160, 30));
-        jPanel11.add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 160, 30));
+        jPanel11.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 160, 30));
+        jPanel11.add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 160, 30));
 
         jLabel1.setText("SUPPLIER:");
-        jPanel11.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, -1, -1));
+        jPanel11.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, -1, -1));
 
         jToggleButton2.setBackground(new java.awt.Color(44, 62, 80));
         jToggleButton2.setForeground(new java.awt.Color(248, 249, 250));
-        jToggleButton2.setText("Add Order");
+        jToggleButton2.setText("Add To Cart");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton2ActionPerformed(evt);
             }
         });
-        jPanel11.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 460, 100, 30));
+        jPanel11.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 100, 30));
 
         jLabel7.setText("SIZE:");
-        jPanel11.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, -1, -1));
+        jPanel11.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, -1, -1));
 
         jLabel10.setText("ID:");
-        jPanel11.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
+        jPanel11.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
 
         jLabel15.setText(" NAME:");
-        jPanel11.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
+        jPanel11.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
 
         jLabel16.setText("CATEGORY:");
-        jPanel11.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
+        jPanel11.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
 
         jLabel18.setText("COLOR:");
-        jPanel11.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, -1, -1));
+        jPanel11.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, -1, -1));
 
         jLabel20.setText("PRICE:");
-        jPanel11.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, -1, -1));
-        jPanel11.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 370, 80, 30));
+        jPanel11.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
+        jPanel11.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 80, 30));
 
         jToggleButton3.setBackground(new java.awt.Color(44, 62, 80));
         jToggleButton3.setForeground(new java.awt.Color(248, 249, 250));
@@ -353,13 +365,53 @@ public class addOrder extends javax.swing.JFrame {
                 jToggleButton3ActionPerformed(evt);
             }
         });
-        jPanel11.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, -1, -1));
+        jPanel11.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
 
         jLabel3.setText("QUANTITY:");
-        jPanel11.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, -1, -1));
-        jPanel11.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 410, 160, 30));
+        jPanel11.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, -1, -1));
+        jPanel11.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 360, 160, 30));
 
-        getContentPane().add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 570, 500));
+        jTabbedPane1.addTab("Add Order", jPanel11);
+
+        jPanel1.setBackground(new java.awt.Color(248, 249, 250));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setBackground(new java.awt.Color(237, 241, 249));
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(237, 241, 249));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 170, -1));
+
+        jLabel6.setBackground(new java.awt.Color(237, 241, 249));
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(44, 62, 80));
+        jLabel6.setText("CART");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 230, 50));
+
+        cart.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(cart);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, 310));
+
+        jToggleButton4.setText("Add Order");
+        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jToggleButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, -1, -1));
+
+        jTabbedPane1.addTab("Cart", jPanel1);
+
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 570, 500));
+        jTabbedPane1.getAccessibleContext().setAccessibleName("Cart");
 
         pack();
         setLocationRelativeTo(null);
@@ -387,94 +439,43 @@ public class addOrder extends javax.swing.JFrame {
         int selectedRow = items.getSelectedRow();
 
         if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(null, "Please select a product from the table first!", "Selection Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please select a product from the table first!");
             return;
         }
 
         Object supplierID = jTextField2.getClientProperty("supplier_id");
         String supplierName = jTextField2.getText();
 
-        if (supplierName == null || supplierName.trim().isEmpty() || supplierName.equalsIgnoreCase("No Supplier Available") || supplierID == null) {
-            JOptionPane.showMessageDialog(null, "Cannot process order: No Supplier Available for this item!", "Supplier Error", JOptionPane.ERROR_MESSAGE);
+        config conf = new config();
+        String checkSql = "SELECT COUNT(*) FROM tbl_order WHERE u_id = ? AND o_status != 'DELIVERED'";
+        if (conf.getSingleValue(checkSql, supplierID) > 0) {
+            JOptionPane.showMessageDialog(null, "Supplier '" + supplierName + "' currently has a pending order in the system database.");
             return;
         }
 
         int requestedQty = Integer.parseInt(jSpinner1.getValue().toString());
-        int availableStock = Integer.parseInt(model.getValueAt(selectedRow, 6).toString());
-
         if (requestedQty <= 0) {
-            JOptionPane.showMessageDialog(null, "Quantity must be greater than 0.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please enter a valid quantity.");
             return;
         }
 
-        if (requestedQty > availableStock) {
-            JOptionPane.showMessageDialog(null, "Insufficient stock! Only " + availableStock + " items available.", "Stock Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        java.time.LocalDate today = java.time.LocalDate.now();
-        String orderDate = today.toString();
-        String deliveryDate = today.plusDays(7).toString();
-        String orderTime = java.time.LocalTime.now().format(java.time.format.DateTimeFormatter.ofPattern("hh:mm a"));
-
-        String id = txtID.getText();
-        String nam = txtName.getText();
-        String cat = txtCategory.getText();
-        String size = txtSize.getText();
-        String color = txtColor.getText();
         double unitPrice = Double.parseDouble(txtPrice.getText());
-
         double totalAmount = unitPrice * requestedQty;
 
-        config conf = new config();
+        DefaultTableModel cartModel = (DefaultTableModel) cart.getModel();
+        cartModel.addRow(new Object[]{
+            txtID.getText(),
+            supplierID,
+            supplierName,
+            txtName.getText(),
+            txtCategory.getText(),
+            txtSize.getText(),
+            txtColor.getText(),
+            totalAmount,
+            requestedQty
+        });
 
-        String sql = "INSERT INTO tbl_order (i_id, u_id, o_name, o_category, o_size, o_color, o_amountpay, o_quantity, o_deliverydate, o_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        conf.addRecord(sql, id, supplierID, nam, cat, size, color, totalAmount, requestedQty, deliveryDate, "PENDING");
-
-        String receipt = "            OSM SYSTEM - ORDER RECEIPT\n"
-                + "------------------------------------------\n"
-                + "Order Date:   " + orderDate + "\n"
-                + "Delivery Due: " + deliveryDate + "\n"
-                + "Time:         " + orderTime + "\n"
-                + "Supplier:     " + supplierName + "\n"
-                + "------------------------------------------\n"
-                + "Product ID:   " + id + "\n"
-                + "Item Name:    " + nam + "\n"
-                + "Category:     " + cat + "\n"
-                + "Size/Color:   " + size + " / " + color + "\n"
-                + "------------------------------------------\n"
-                + "Unit Price:   ₱" + String.format("%,.2f", unitPrice) + "\n"
-                + "Quantity:     " + requestedQty + "\n"
-                + "------------------------------------------\n"
-                + "TOTAL AMOUNT: ₱" + String.format("%,.2f", totalAmount) + "\n"
-                + "------------------------------------------\n"
-                + "\nOrder Added Successfully!\nDo you want to make another order?";
-
-        javax.swing.JTextArea textArea = new javax.swing.JTextArea(receipt);
-        textArea.setEditable(false);
-        textArea.setFont(new java.awt.Font("Monospaced", java.awt.Font.PLAIN, 12));
-        javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane(textArea);
-        scrollPane.setPreferredSize(new java.awt.Dimension(350, 400));
-
-        int choice = JOptionPane.showConfirmDialog(null, scrollPane, "Order Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
-
-        if (choice == JOptionPane.YES_OPTION) {
-            txtID.setText("");
-            txtName.setText("");
-            txtCategory.setText("");
-            txtSize.setText("");
-            txtColor.setText("");
-            txtPrice.setText("");
-            jSpinner1.setValue(0);
-            jTextField2.setText("");
-            displayItems();
-        } else {
-            Managerdashboard back = new Managerdashboard();
-            back.setVisible(true);
-            back.setLocationRelativeTo(null);
-            this.dispose();
-        }
+        JOptionPane.showMessageDialog(null, "Added to cart!");
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
@@ -639,13 +640,61 @@ public class addOrder extends javax.swing.JFrame {
         jLabel5.setBackground(new java.awt.Color(44, 62, 80));
     }//GEN-LAST:event_jLabel5MouseExited
 
+    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
+        DefaultTableModel model = (DefaultTableModel) cart.getModel();
+
+        if (model.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Your cart is empty!");
+            return;
+        }
+
+        config conf = new config();
+        String sql = "INSERT INTO tbl_order (i_id, u_id, o_name, o_category, o_size, o_color, o_amountpay, o_quantity, o_deliverydate, o_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        StringBuilder receiptItems = new StringBuilder();
+        double grandTotal = 0;
+        String deliveryDate = java.time.LocalDate.now().plusDays(7).toString();
+
+        try {
+            for (int i = 0; i < model.getRowCount(); i++) {
+                Object i_id = model.getValueAt(i, 0);
+                Object u_id = model.getValueAt(i, 1);
+                String name = model.getValueAt(i, 3).toString();
+                double amt = Double.parseDouble(model.getValueAt(i, 7).toString());
+                int qty = Integer.parseInt(model.getValueAt(i, 8).toString());
+
+                conf.addRecord(sql, i_id, u_id, name, model.getValueAt(i, 4), model.getValueAt(i, 5), model.getValueAt(i, 6), amt, qty, deliveryDate, "PENDING");
+
+                receiptItems.append(String.format("%-15s x%d   ₱%,.2f\n", name, qty, amt));
+                grandTotal += amt;
+            }
+
+            String receipt = "            OSM SYSTEM RECEIPT\n"
+                    + "------------------------------------------\n"
+                    + receiptItems.toString()
+                    + "------------------------------------------\n"
+                    + "GRAND TOTAL: ₱" + String.format("%,.2f", grandTotal);
+
+            javax.swing.JTextArea txt = new javax.swing.JTextArea(receipt);
+            txt.setFont(new java.awt.Font("Monospaced", 0, 12));
+            JOptionPane.showMessageDialog(null, new javax.swing.JScrollPane(txt), "Order Finalized", JOptionPane.PLAIN_MESSAGE);
+
+            model.setRowCount(0);
+            new Managerdashboard().setVisible(true);
+            this.dispose();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_jToggleButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel add;
+    private javax.swing.JTable cart;
     private javax.swing.JLabel email;
     private javax.swing.JLabel image;
     private javax.swing.JTable items;
@@ -659,16 +708,22 @@ public class addOrder extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JLabel line;
     private javax.swing.JLabel line1;
     private javax.swing.JLabel name;

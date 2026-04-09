@@ -40,10 +40,6 @@ public class Signup extends javax.swing.JFrame {
         jpassword = new javax.swing.JPasswordField();
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        company1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel17 = new javax.swing.JLabel();
         jemail2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -79,19 +75,19 @@ public class Signup extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(44, 62, 80));
         jLabel8.setText("Name:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 170, 30));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 170, 30));
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(44, 62, 80));
         jLabel9.setText("Email:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 170, 30));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 170, 30));
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(44, 62, 80));
         jLabel10.setText("Password:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 170, 30));
-        jPanel1.add(jname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 280, 30));
-        jPanel1.add(jpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 280, 30));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 170, 30));
+        jPanel1.add(jname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 280, 30));
+        jPanel1.add(jpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 280, 30));
 
         jToggleButton1.setBackground(new java.awt.Color(44, 62, 80));
         jToggleButton1.setForeground(new java.awt.Color(237, 241, 249));
@@ -107,29 +103,7 @@ public class Signup extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(44, 62, 80));
         jLabel12.setText("Already have an account?");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 190, 30));
-
-        jLabel13.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(44, 62, 80));
-        jLabel13.setText("User Type:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 170, 30));
-        jPanel1.add(company1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 280, 30));
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Supplier", "Manager" }));
-        jComboBox1.setName(""); // NOI18N
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 90, 30));
-        jComboBox1.getAccessibleContext().setAccessibleName("Choose");
-        jComboBox1.getAccessibleContext().setAccessibleDescription("Choose");
-
-        jLabel17.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(44, 62, 80));
-        jLabel17.setText("Company:");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 170, 30));
-        jPanel1.add(jemail2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 280, 30));
+        jPanel1.add(jemail2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 280, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 410, 500));
 
@@ -190,16 +164,8 @@ public class Signup extends javax.swing.JFrame {
         String name = jname.getText().trim();
         String email = jemail2.getText().trim();
         String pass = jpassword.getText();
-        String type = jComboBox1.getSelectedItem().toString();
-        String company;
 
-        if (type.equals("Manager")) {
-            company = "Internal"; 
-        } else {
-            company = company1.getText().trim(); 
-        }
-
-        if (name.isEmpty() || email.isEmpty() || pass.isEmpty() || company.isEmpty()) {
+        if (name.isEmpty() || email.isEmpty() || pass.isEmpty()) {
             JOptionPane.showMessageDialog(null, "All fields are required to fill in!");
             return;
         }
@@ -211,8 +177,6 @@ public class Signup extends javax.swing.JFrame {
             jname.setText("");
             jemail2.setText("");
             jpassword.setText("");
-            company1.setText("");
-            jComboBox1.setSelectedItem("");
             return;
 
         }
@@ -224,9 +188,9 @@ public class Signup extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Email already exists. Please enter another email.");
         } else {
             String hash = db.hashPassword(pass);
-            String sql = "INSERT INTO tbl_user (u_name, u_email, u_pass, u_company, u_status, u_type, u_image) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO tbl_user (u_name, u_email, u_pass, u_status, u_image) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-            db.addRecord(sql, name, email, hash, company, "PENDING", type, "src/images/profile.png");
+            db.addRecord(sql, name, email, hash, "PENDING", "src/images/profile.png");
 
             JOptionPane.showMessageDialog(null, "Account Successfully Created!");
 
@@ -247,36 +211,18 @@ public class Signup extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        String selectedRole = jComboBox1.getSelectedItem().toString();
-
-        // Show company field ONLY for Suppliers
-        if (selectedRole.equals("Supplier")) {
-            jLabel17.setVisible(true);
-            company1.setVisible(true);
-        } else {
-            company1.setVisible(false);
-            jLabel17.setVisible(false);
-            company1.setText(""); // Clear it if they switch back to Manager
-        }
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField company1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
